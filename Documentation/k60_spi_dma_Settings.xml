@@ -605,10 +605,10 @@ PE_DEBUGHALT();
         <Clock_gate v="Enabled" />
         <enumgroup name="Configuration 0" v="Master">
           <group name="Clock setting">
-            <Baud_rate_prescaler v="divide by 2" />
-            <Double_baud_rate v="Enabled" />
+            <Baud_rate_prescaler v="divide by 3" />
+            <Double_baud_rate v="Disabled" />
             <Baud_rate_scaler v="divide by 2" />
-            <DSPI_frequency v="10.486 MHz" />
+            <DSPI_frequency v="3.495 MHz" />
             <PCS_to_SCK_delay_prescaler v="divide by 1" />
             <PCS_to_SCK_delay_scaler v="divide by 2" />
             <PCS_to_SCK_delay v="0.095 us" />
@@ -620,7 +620,7 @@ PE_DEBUGHALT();
             <Delay_after_transfer v="0.095 us" />
           </group>
           <Transfer_size v="8" />
-          <Clock_polarity v="Low" />
+          <Clock_polarity v="High" />
           <Clock_phase v="Capture on leading edge" />
           <LSB_first v="Disabled" />
         </enumgroup>

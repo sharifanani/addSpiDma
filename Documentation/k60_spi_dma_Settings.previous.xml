@@ -399,7 +399,7 @@ PE_DEBUGHALT();
     <Properties>
       <Component_name v="DMACH1" />
       <boolgroup name="Hardware request" v="Enabled">
-        <Request_source v="SPI1_Transmit_DMA_Request" />
+        <Request_source v="SPI2_Transmit_DMA_Request" />
         <boolgroup name="Request periodic trigger" v="Disabled" />
       </boolgroup>
       <enumgroup name="Channel select" v="Fixed">
@@ -500,7 +500,7 @@ PE_DEBUGHALT();
     <Properties>
       <Component_name v="DMACH2" />
       <boolgroup name="Hardware request" v="Enabled">
-        <Request_source v="SPI1_Receive_DMA_Request" />
+        <Request_source v="SPI2_Receive_DMA_Request" />
         <boolgroup name="Request periodic trigger" v="Disabled" />
       </boolgroup>
       <enumgroup name="Channel select" v="Fixed">
@@ -605,10 +605,10 @@ PE_DEBUGHALT();
         <Clock_gate v="Enabled" />
         <enumgroup name="Configuration 0" v="Master">
           <group name="Clock setting">
-            <Baud_rate_prescaler v="divide by 2" />
-            <Double_baud_rate v="Enabled" />
+            <Baud_rate_prescaler v="divide by 3" />
+            <Double_baud_rate v="Disabled" />
             <Baud_rate_scaler v="divide by 2" />
-            <DSPI_frequency v="10.486 MHz" />
+            <DSPI_frequency v="3.495 MHz" />
             <PCS_to_SCK_delay_prescaler v="divide by 1" />
             <PCS_to_SCK_delay_scaler v="divide by 2" />
             <PCS_to_SCK_delay v="0.095 us" />

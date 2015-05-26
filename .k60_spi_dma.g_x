@@ -26,7 +26,7 @@
       <File Name="Generated_Code/Vectors.c" FileDate="2015-05-26, 09:30:37" FileAge="1432654237012" FileType="45637" CompNumb="4" />
       <File Name="Static_Code/PDD/MCM_PDD.h" FileDate="2015-04-10, 17:37:18" FileAge="1428709038000" FileType="262144" />
       <File Name="Static_Code/PDD/SIM_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
-      <File Name="Documentation/k60_spi_dma_SIGNALS.txt" FileDate="2015-05-26, 10:58:32" FileAge="1432659512547" FileType="3072" />
+      <File Name="Documentation/k60_spi_dma_SIGNALS.txt" FileDate="2015-05-26, 14:31:03" FileAge="1432672263348" FileType="3072" />
       <File Name="Static_Code/PDD/PORT_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Static_Code/PDD/DMAMUX_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Static_Code/PDD/OSC_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
@@ -45,7 +45,7 @@
       <File Name="Static_Code/PDD/ENET_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Static_Code/PDD/PDB_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Generated_Code/PE_Types.h" FileDate="2015-05-26, 07:53:16" FileAge="1432648396232" FileType="45637" />
-      <File Name="Documentation/k60_spi_dma_Settings.xml" FileDate="2015-05-26, 10:58:32" FileAge="1432659512583" FileType="3072" />
+      <File Name="Documentation/k60_spi_dma_Settings.xml" FileDate="2015-05-26, 14:31:03" FileAge="1432672263418" FileType="3072" />
       <File Name="Static_Code/PDD/FTM_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Project_Settings/Startup_Code/startup.c" FileDate="2015-03-26, 15:21:30" FileAge="1427404890000" FileType="16384" CompNumb="4" />
       <File Name="Generated_Code/PE_Error.h" FileDate="2015-05-26, 07:53:16" FileAge="1432648396232" FileType="45637" />
@@ -53,7 +53,7 @@
       <File Name="Static_Code/PDD/SAI_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Static_Code/PDD/I2C_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Static_Code/PDD/RTC_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
-      <File Name="Sources/main.c" FileDate="2015-05-26, 10:40:15" FileAge="1432658415391" FileType="128" />
+      <File Name="Sources/main.c" FileDate="2015-05-26, 14:17:51" FileAge="1432671471834" FileType="128" />
       <File Name="Static_Code/PDD/VREF_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Static_Code/PDD/CMP_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Static_Code/PDD/WDOG_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
@@ -61,7 +61,7 @@
       <File Name="Project_Settings/Linker_Files/ProcessorExpert.ld" FileDate="2015-05-26, 07:53:16" FileAge="1432648396272" FileType="8" CompNumb="4" />
       <File Name="Static_Code/PDD/CMT_PDD.h" FileDate="2015-04-10, 17:37:18" FileAge="1428709038000" FileType="262144" />
       <File Name="Static_Code/PDD/SPI_PDD.h" FileDate="2015-04-10, 17:37:18" FileAge="1428709038000" FileType="262144" />
-      <File Name="Documentation/doxygen/SPI2_component.txt" FileDate="2015-05-26, 10:32:57" FileAge="1432657977478" FileType="45637" CompNumb="25" />
+      <File Name="Documentation/doxygen/SPI2_component.txt" FileDate="2015-05-26, 14:31:03" FileAge="1432672263328" FileType="45637" CompNumb="25" />
       <File Name="Static_Code/PDD/CAN_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Documentation/doxygen/pex.css" FileDate="2015-03-26, 15:21:30" FileAge="1427404890000" FileType="16384" CompNumb="4" />
       <File Name="Documentation/doxygen/pex.doxyfile" FileDate="2015-05-26, 07:53:16" FileAge="1432648396272" FileType="45637" CompNumb="4" />
@@ -70,12 +70,12 @@
       <File Name="Static_Code/PDD/LPTMR_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Generated_Code/DMA1.c" FileDate="2015-05-26, 07:53:16" FileAge="1432648396272" FileType="45637" CompNumb="14" />
       <File Name="Generated_Code/DMACH2.h" FileDate="2015-05-26, 10:58:32" FileAge="1432659512502" FileType="45637" CompNumb="16" />
-      <File Name="Generated_Code/SPI2.h" FileDate="2015-05-26, 10:32:57" FileAge="1432657977454" FileType="45637" CompNumb="25" />
+      <File Name="Generated_Code/SPI2.h" FileDate="2015-05-26, 14:31:03" FileAge="1432672263308" FileType="45637" CompNumb="25" />
       <File Name="Static_Code/PDD/USBDCD_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Generated_Code/PE_LDD.h" FileDate="2015-05-26, 09:30:37" FileAge="1432654237012" FileType="45637" CompNumb="4" />
       <File Name="Generated_Code/DMACH2.c" FileDate="2015-05-26, 10:58:32" FileAge="1432659512530" FileType="45637" CompNumb="16" />
       <File Name="Static_Code/PDD/PIT_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
-      <File Name="Generated_Code/SPI2.c" FileDate="2015-05-26, 10:32:57" FileAge="1432657977468" FileType="45637" CompNumb="25" />
+      <File Name="Generated_Code/SPI2.c" FileDate="2015-05-26, 14:31:03" FileAge="1432672263318" FileType="45637" CompNumb="25" />
       <File Name="Generated_Code/PE_LDD.c" FileDate="2015-05-26, 07:53:16" FileAge="1432648396222" FileType="45637" CompNumb="4" />
       <File Name="Static_Code/PDD/FMC_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Sources/Events.h" FileDate="2015-05-26, 09:30:37" FileAge="1432654237022" FileType="131328" />
@@ -93,5 +93,5 @@
       <File Name="Documentation/doxygen/SPI1_component.txt" FileDate="2015-05-26, 10:26:46" FileAge="1432657606444" FileType="45637" CompNumb="8" />
     </GeneratedByPE>
   </GeneratedFilesList>
-  <CodeGenReference>32</CodeGenReference>
+  <CodeGenReference>35</CodeGenReference>
 </CodeGenerationInfo>

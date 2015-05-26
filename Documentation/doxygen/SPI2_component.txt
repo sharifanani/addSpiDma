@@ -25,7 +25,7 @@ by the component.
 <td class="regResetVal">0x00000000</td>
  <td>SPI2_TCR register, peripheral SPI2.</td></tr>
 <tr><td>0x400AC00C</td><td>SPI2_CTAR0</td>
-<td class="regNotResetVal">0xB8000000</td>
+<td class="regNotResetVal">0x3C010000</td>
  <td>SPI2_CTAR0 register, peripheral SPI2.</td></tr>
 <tr><td>0x400AC010</td><td>SPI2_CTAR1</td>
 <td class="regResetVal">0x78000000</td>
@@ -253,12 +253,12 @@ registers of the peripheral(s) configured by the component.
         
 </div>
 <table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x400AC00C</td></tr>
-<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0xB8000000</td></tr>
+<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x3C010000</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x78000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
-<tr><td>31</td><td>DBR</td><td>0x01</td><td>Double Baud Rate</td>
+<tr><td>31</td><td>DBR</td><td>0x00</td><td>Double Baud Rate</td>
 <tr><td>27 - 30</td><td>FMSZ</td><td>0x00</td><td>Frame Size</td>
-<tr><td>26</td><td>CPOL</td><td>0x00</td><td>Clock Polarity</td>
+<tr><td>26</td><td>CPOL</td><td>0x01</td><td>Clock Polarity</td>
 <tr><td>25</td><td>CPHA</td><td>0x00</td><td>Clock Phase</td>
 <tr><td>24</td><td>LSBFE</td><td>0x00</td><td>LSB First</td>
 <tr><td>22 - 23</td><td>PCSSCK</td><td>0x00</td><td>PCS to SCK Delay Prescaler</td>
@@ -456,10 +456,10 @@ registers of the peripheral(s) configured by the component.
 **            Clock gate                                   : Enabled
 **            Configuration 0                              : Master
 **              Clock setting                              : 
-**                Baud rate prescaler                      : divide by 2
-**                Double baud rate                         : Enabled
+**                Baud rate prescaler                      : divide by 3
+**                Double baud rate                         : Disabled
 **                Baud rate scaler                         : divide by 2
-**                DSPI frequency                           : 10.486 MHz
+**                DSPI frequency                           : 3.495 MHz
 **                PCS to SCK delay prescaler               : divide by 1
 **                PCS to SCK delay scaler                  : divide by 2
 **                PCS to SCK delay                         : 0.095 us
@@ -470,7 +470,7 @@ registers of the peripheral(s) configured by the component.
 **                Delay after transfer scaler              : divide by 2
 **                Delay after transfer                     : 0.095 us
 **              Transfer size                              : 8
-**              Clock polarity                             : Low
+**              Clock polarity                             : High
 **              Clock phase                                : Capture on leading edge
 **              LSB first                                  : Disabled
 **            Configuration 1                              : Master

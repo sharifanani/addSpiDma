@@ -133,7 +133,7 @@
     </GenFiles>
     <SignalListFile>Documentation\k60_spi_dma_SIGNALS.txt</SignalListFile>
     <DestinationCompiler>GNUC</DestinationCompiler>
-    <ProjectModificationStamp>30</ProjectModificationStamp>
+    <ProjectModificationStamp>32</ProjectModificationStamp>
   </Options>
   <CpuID_2>
     <Generated>false</Generated>
@@ -983,8 +983,8 @@
     <GenComponentVersion>01.006</GenComponentVersion>
     <GenDriverVersion>01.06</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1186616348</HeaderAge>
-    <CodeAge>1186616348</CodeAge>
+    <HeaderAge>1186624481</HeaderAge>
+    <CodeAge>1186624481</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>1</GenNumMethods>
     <Init>true</Init>

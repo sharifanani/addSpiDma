@@ -3,7 +3,7 @@
   <Header>
     <Name>k60_spi_dma</Name>
     <SavedBy>AMcguire</SavedBy>
-    <ModificationStamp>30</ModificationStamp>
+    <ModificationStamp>32</ModificationStamp>
     <Date>2015-03-27</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.12.0.RT7_b1515-0427</PEversion>
@@ -32735,8 +32735,8 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <TypeSpecNameState>typeDivisor</TypeSpecNameState>
-        <Index>0</Index>
-        <EnumSymbVal>0</EnumSymbVal>
+        <Index>1</Index>
+        <EnumSymbVal>1</EnumSymbVal>
       </ItemState>
       <ItemState>
         <ItemSymbol>Doubler0</ItemSymbol>
@@ -32744,8 +32744,8 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <TypeSpecNameState>typeDoubler</TypeSpecNameState>
-        <Index>1</Index>
-        <EnumSymbVal>2</EnumSymbVal>
+        <Index>0</Index>
+        <EnumSymbVal>1</EnumSymbVal>
       </ItemState>
       <ItemState>
         <ItemSymbol>Scaler0</ItemSymbol>
@@ -32758,7 +32758,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>Frequency0</ItemSymbol>
-        <Value>10.486 MHz</Value>
+        <Value>3.495 MHz</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>PCStoSCKDivisor0</ItemSymbol>
@@ -32841,8 +32841,8 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <TypeSpecNameState>typeClockPolarity</TypeSpecNameState>
-        <Index>0</Index>
-        <EnumSymbVal>low</EnumSymbVal>
+        <Index>1</Index>
+        <EnumSymbVal>high</EnumSymbVal>
       </ItemState>
       <ItemState>
         <ItemSymbol>ClockPhase0</ItemSymbol>
