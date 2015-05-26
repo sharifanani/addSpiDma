@@ -1,0 +1,8 @@
+20150526T0752 KDS Upgrade Assistant Conversion Report
+Project name: k60_spi_dma
+Project location: C:/Users/sanani/Documents/GitHub/k60_spi_dma
+Conversion status: success.
+Toolchain settings, for configuration Debug: successfully converted.
+Newlib-nano, for configuration Debug: successfully converted.
+Semihosting support nosys (-specs=nosys.specs), for configuration Debug: successfully added.
+A backup of the original .cproject file has been created in .cproject_backup
