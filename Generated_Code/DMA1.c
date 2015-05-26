@@ -7,7 +7,7 @@
 **     Version     : Component 01.039, Driver 01.02, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-26, 07:53, # CodeGen: 21
+**     Date/Time   : 2015-05-26, 16:04, # CodeGen: 50
 **     Abstract    :
 **          This embedded component implements initialization
 **          and runtime handling of an on-chip DMA controller.

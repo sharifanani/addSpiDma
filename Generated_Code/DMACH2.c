@@ -7,7 +7,7 @@
 **     Version     : Component 01.053, Driver 01.01, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-26, 10:58, # CodeGen: 31
+**     Date/Time   : 2015-05-26, 16:04, # CodeGen: 50
 **     Abstract    :
 **          This embedded component implements
 **          a DMA transfer channel descriptor definition.

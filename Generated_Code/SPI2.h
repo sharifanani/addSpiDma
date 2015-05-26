@@ -7,7 +7,7 @@
 **     Version     : Component 01.006, Driver 01.06, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-26, 15:45, # CodeGen: 49
+**     Date/Time   : 2015-05-26, 16:04, # CodeGen: 50
 **     Abstract    :
 **          This file implements the SPI (SPI2) module initialization
 **          according to the Peripheral Initialization settings, and
