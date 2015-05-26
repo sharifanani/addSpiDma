@@ -7,7 +7,7 @@
 **     Version     : Component 01.006, Driver 01.06, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-26, 14:30, # CodeGen: 34
+**     Date/Time   : 2015-05-26, 15:45, # CodeGen: 49
 **     Abstract    :
 **          This file implements the SPI (SPI2) module initialization
 **          according to the Peripheral Initialization settings, and
@@ -19,19 +19,19 @@
 **            Clock gate                                   : Enabled
 **            Configuration 0                              : Master
 **              Clock setting                              : 
-**                Baud rate prescaler                      : divide by 3
-**                Double baud rate                         : Disabled
+**                Baud rate prescaler                      : divide by 2
+**                Double baud rate                         : Enabled
 **                Baud rate scaler                         : divide by 2
-**                DSPI frequency                           : 3.495 MHz
+**                DSPI frequency                           : 10.486 MHz
 **                PCS to SCK delay prescaler               : divide by 1
 **                PCS to SCK delay scaler                  : divide by 2
 **                PCS to SCK delay                         : 0.095 us
-**                After SCK delay prescaler                : divide by 1
-**                After SCK delay scaler                   : divide by 2
-**                After SCK delay                          : 0.095 us
-**                Delay after transfer prescaler           : divide by 1
-**                Delay after transfer scaler              : divide by 2
-**                Delay after transfer                     : 0.095 us
+**                After SCK delay prescaler                : divide by 3
+**                After SCK delay scaler                   : divide by 16
+**                After SCK delay                          : 2.289 us
+**                Delay after transfer prescaler           : divide by 3
+**                Delay after transfer scaler              : divide by 16
+**                Delay after transfer                     : 2.289 us
 **              Transfer size                              : 8
 **              Clock polarity                             : High
 **              Clock phase                                : Capture on leading edge
@@ -189,16 +189,17 @@ void SPI2_Init(void)
              SPI_MCR_HALT_MASK;
   /* SPI2_TCR: SPI_TCNT=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0 */
   SPI2_TCR = SPI_TCR_SPI_TCNT(0x00);
-  /* SPI2_CTAR0: DBR=0,FMSZ=7,CPOL=1,CPHA=0,LSBFE=0,PCSSCK=0,PASC=0,PDT=0,PBR=1,CSSCK=0,ASC=0,DT=0,BR=0 */
-  SPI2_CTAR0 = SPI_CTAR_FMSZ(0x07) |
+  /* SPI2_CTAR0: DBR=1,FMSZ=7,CPOL=1,CPHA=0,LSBFE=0,PCSSCK=0,PASC=1,PDT=1,PBR=0,CSSCK=0,ASC=3,DT=3,BR=0 */
+  SPI2_CTAR0 = SPI_CTAR_DBR_MASK |
+               SPI_CTAR_FMSZ(0x07) |
                SPI_CTAR_CPOL_MASK |
                SPI_CTAR_PCSSCK(0x00) |
-               SPI_CTAR_PASC(0x00) |
-               SPI_CTAR_PDT(0x00) |
-               SPI_CTAR_PBR(0x01) |
+               SPI_CTAR_PASC(0x01) |
+               SPI_CTAR_PDT(0x01) |
+               SPI_CTAR_PBR(0x00) |
                SPI_CTAR_CSSCK(0x00) |
-               SPI_CTAR_ASC(0x00) |
-               SPI_CTAR_DT(0x00) |
+               SPI_CTAR_ASC(0x03) |
+               SPI_CTAR_DT(0x03) |
                SPI_CTAR_BR(0x00);
   /* SPI2_CTAR1: DBR=0,FMSZ=0x0F,CPOL=0,CPHA=0,LSBFE=0,PCSSCK=0,PASC=0,PDT=0,PBR=0,CSSCK=0,ASC=0,DT=0,BR=0 */
   SPI2_CTAR1 = SPI_CTAR_FMSZ(0x0F) |

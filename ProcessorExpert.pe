@@ -3,7 +3,7 @@
   <Header>
     <Name>k60_spi_dma</Name>
     <SavedBy>AMcguire</SavedBy>
-    <ModificationStamp>32</ModificationStamp>
+    <ModificationStamp>47</ModificationStamp>
     <Date>2015-03-27</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.12.0.RT7_b1515-0427</PEversion>
@@ -32735,8 +32735,8 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <TypeSpecNameState>typeDivisor</TypeSpecNameState>
-        <Index>1</Index>
-        <EnumSymbVal>1</EnumSymbVal>
+        <Index>0</Index>
+        <EnumSymbVal>0</EnumSymbVal>
       </ItemState>
       <ItemState>
         <ItemSymbol>Doubler0</ItemSymbol>
@@ -32744,8 +32744,8 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <TypeSpecNameState>typeDoubler</TypeSpecNameState>
-        <Index>0</Index>
-        <EnumSymbVal>1</EnumSymbVal>
+        <Index>1</Index>
+        <EnumSymbVal>2</EnumSymbVal>
       </ItemState>
       <ItemState>
         <ItemSymbol>Scaler0</ItemSymbol>
@@ -32758,7 +32758,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>Frequency0</ItemSymbol>
-        <Value>3.495 MHz</Value>
+        <Value>10.486 MHz</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>PCStoSCKDivisor0</ItemSymbol>
@@ -32788,8 +32788,8 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <TypeSpecNameState>typeAfterSCKDivisor</TypeSpecNameState>
-        <Index>0</Index>
-        <EnumSymbVal>0</EnumSymbVal>
+        <Index>1</Index>
+        <EnumSymbVal>1</EnumSymbVal>
       </ItemState>
       <ItemState>
         <ItemSymbol>AfterSCKScaler0</ItemSymbol>
@@ -32797,12 +32797,12 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <TypeSpecNameState>typeAfterSCKScaler</TypeSpecNameState>
-        <Index>0</Index>
-        <EnumSymbVal>0</EnumSymbVal>
+        <Index>3</Index>
+        <EnumSymbVal>3</EnumSymbVal>
       </ItemState>
       <ItemState>
         <ItemSymbol>AfterSCKDelay0</ItemSymbol>
-        <Value>0.095 us</Value>
+        <Value>2.289 us</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>AfterTransferDivisor0</ItemSymbol>
@@ -32810,8 +32810,8 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <TypeSpecNameState>typeAfterTransferDivisor</TypeSpecNameState>
-        <Index>0</Index>
-        <EnumSymbVal>0</EnumSymbVal>
+        <Index>1</Index>
+        <EnumSymbVal>1</EnumSymbVal>
       </ItemState>
       <ItemState>
         <ItemSymbol>AfterTransferScaler0</ItemSymbol>
@@ -32819,12 +32819,12 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <TypeSpecNameState>typeAfterTransferScaler</TypeSpecNameState>
-        <Index>0</Index>
-        <EnumSymbVal>0</EnumSymbVal>
+        <Index>3</Index>
+        <EnumSymbVal>3</EnumSymbVal>
       </ItemState>
       <ItemState>
         <ItemSymbol>AfterTransferDelay0</ItemSymbol>
-        <Value>0.095 us</Value>
+        <Value>2.289 us</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>TransferSize0</ItemSymbol>

@@ -7,7 +7,7 @@
 **     Version     : Component 01.006, Driver 01.06, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-26, 14:30, # CodeGen: 34
+**     Date/Time   : 2015-05-26, 15:45, # CodeGen: 49
 **     Abstract    :
 **          This file implements the SPI (SPI2) module initialization
 **          according to the Peripheral Initialization settings, and
@@ -19,19 +19,19 @@
 **            Clock gate                                   : Enabled
 **            Configuration 0                              : Master
 **              Clock setting                              : 
-**                Baud rate prescaler                      : divide by 3
-**                Double baud rate                         : Disabled
+**                Baud rate prescaler                      : divide by 2
+**                Double baud rate                         : Enabled
 **                Baud rate scaler                         : divide by 2
-**                DSPI frequency                           : 3.495 MHz
+**                DSPI frequency                           : 10.486 MHz
 **                PCS to SCK delay prescaler               : divide by 1
 **                PCS to SCK delay scaler                  : divide by 2
 **                PCS to SCK delay                         : 0.095 us
-**                After SCK delay prescaler                : divide by 1
-**                After SCK delay scaler                   : divide by 2
-**                After SCK delay                          : 0.095 us
-**                Delay after transfer prescaler           : divide by 1
-**                Delay after transfer scaler              : divide by 2
-**                Delay after transfer                     : 0.095 us
+**                After SCK delay prescaler                : divide by 3
+**                After SCK delay scaler                   : divide by 16
+**                After SCK delay                          : 2.289 us
+**                Delay after transfer prescaler           : divide by 3
+**                Delay after transfer scaler              : divide by 16
+**                Delay after transfer                     : 2.289 us
 **              Transfer size                              : 8
 **              Clock polarity                             : High
 **              Clock phase                                : Capture on leading edge

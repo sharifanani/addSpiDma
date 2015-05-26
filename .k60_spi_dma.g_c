@@ -133,7 +133,7 @@
     </GenFiles>
     <SignalListFile>Documentation\k60_spi_dma_SIGNALS.txt</SignalListFile>
     <DestinationCompiler>GNUC</DestinationCompiler>
-    <ProjectModificationStamp>32</ProjectModificationStamp>
+    <ProjectModificationStamp>47</ProjectModificationStamp>
   </Options>
   <CpuID_2>
     <Generated>false</Generated>
@@ -983,8 +983,8 @@
     <GenComponentVersion>01.006</GenComponentVersion>
     <GenDriverVersion>01.06</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1186624481</HeaderAge>
-    <CodeAge>1186624481</CodeAge>
+    <HeaderAge>1186626999</HeaderAge>
+    <CodeAge>1186626999</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>1</GenNumMethods>
     <Init>true</Init>
@@ -1006,7 +1006,7 @@
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
       <LineBeg>159</LineBeg>
-      <LineEnd>231</LineEnd>
+      <LineEnd>232</LineEnd>
     </MethodPos>
     <GenExtraFilesCount>1</GenExtraFilesCount>
     <ExtraFile0>Documentation\doxygen\SPI2_component.txt</ExtraFile0>
