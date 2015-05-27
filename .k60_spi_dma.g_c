@@ -133,7 +133,7 @@
     </GenFiles>
     <SignalListFile>Documentation\k60_spi_dma_SIGNALS.txt</SignalListFile>
     <DestinationCompiler>GNUC</DestinationCompiler>
-    <ProjectModificationStamp>52</ProjectModificationStamp>
+    <ProjectModificationStamp>53</ProjectModificationStamp>
   </Options>
   <CpuID_2>
     <Generated>false</Generated>

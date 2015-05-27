@@ -42,7 +42,7 @@
       <File Name="Generated_Code/DMACH2.h" FileDate="2015-05-27, 11:58:28" FileAge="1432749508053" FileType="45637" CompNumb="16" />
       <File Name="Generated_Code/PE_Error.h" FileDate="2015-05-26, 16:04:58" FileAge="1432677898501" FileType="45637" />
       <File Name="Static_Code/PDD/PDB_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
-      <File Name="Sources/main.c" FileDate="2015-05-27, 12:45:24" FileAge="1432752324817" FileType="128" />
+      <File Name="Sources/main.c" FileDate="2015-05-27, 15:26:44" FileAge="1432762004028" FileType="128" />
       <File Name="Generated_Code/PE_Types.h" FileDate="2015-05-26, 16:04:58" FileAge="1432677898510" FileType="45637" />
       <File Name="Static_Code/PDD/FTM_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Generated_Code/PE_LDD.c" FileDate="2015-05-26, 16:04:58" FileAge="1432677898449" FileType="45637" CompNumb="4" />
@@ -64,7 +64,7 @@
       <File Name="Static_Code/PDD/SPI_PDD.h" FileDate="2015-04-10, 17:37:18" FileAge="1428709038000" FileType="262144" />
       <File Name="Generated_Code/Cpu.c" FileDate="2015-05-26, 16:04:58" FileAge="1432677898462" FileType="45637" CompNumb="4" />
       <File Name="Static_Code/PDD/CAN_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
-      <File Name="Documentation/k60_spi_dma_SIGNALS.txt" FileDate="2015-05-27, 12:45:30" FileAge="1432752330701" FileType="3072" />
+      <File Name="Documentation/k60_spi_dma_SIGNALS.txt" FileDate="2015-05-27, 15:26:49" FileAge="1432762009920" FileType="3072" />
       <File Name="Static_Code/PDD/PDD_Types.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Static_Code/PDD/USB_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
       <File Name="Static_Code/PDD/GPIO_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
@@ -93,5 +93,5 @@
       <File Name="Static_Code/PDD/SIM_PDD.h" FileDate="2015-04-10, 17:37:20" FileAge="1428709040000" FileType="262144" />
     </GeneratedByPE>
   </GeneratedFilesList>
-  <CodeGenReference>58</CodeGenReference>
+  <CodeGenReference>59</CodeGenReference>
 </CodeGenerationInfo>
