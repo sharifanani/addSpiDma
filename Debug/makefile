@@ -52,7 +52,7 @@ all: k60_spi_dma.elf secondary-outputs
 k60_spi_dma.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "C:/Users/sanani/Documents/GitHub/k60_spi_dma/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"C:/Users/sanani/Documents/GitHub/k60_spi_dma/Project_Settings/Linker_Files" -Wl,-Map,"k60_spi_dma.map" --specs=nano.specs -specs=nosys.specs -o "k60_spi_dma.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Project_Settings/Linker_Files" -Wl,-Map,"k60_spi_dma.map" --specs=nano.specs -specs=nosys.specs -o "k60_spi_dma.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

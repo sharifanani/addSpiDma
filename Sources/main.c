@@ -85,7 +85,8 @@ int main(void)
   SpiDmaTxBuffer[3] = SPI_PUSHR_PCS(1) | SPI_PUSHR_CONT_MASK | 0X00;
   SpiDmaTxBuffer[4] = SPI_PUSHR_PCS(1) | SPI_PUSHR_CONT_MASK | 0X00;
   SpiDmaTxBuffer[5] = SPI_PUSHR_PCS(1) | SPI_PUSHR_CONT_MASK | 0X00;
-  SpiDmaTxBuffer[6] = SPI_PUSHR_PCS(1) | SPI_PUSHR_EOQ_MASK | 0;		// Transmit an empty byte to clock in the RX byte
+  SpiDmaTxBuffer[6] = SPI_PUSHR_PCS(1) | SPI_PUSHR_CONT_MASK | 0X00;
+  SpiDmaTxBuffer[7] = SPI_PUSHR_PCS(1) | SPI_PUSHR_EOQ_MASK  | 0x00;		// Transmit an empty byte to clock in the RX byte
 
   DMACH1_SetSourceAddress(SpiTxDmaLDD, &SpiDmaTxBuffer[0]);
   DMACH1_SetDestinationAddress(SpiTxDmaLDD, &SPI2_PUSHR);
@@ -93,19 +94,24 @@ int main(void)
   DMACH2_SetSourceAddress(SpiRxDmaLDD, &SPI2_POPR);
   DMACH2_SetDestinationAddress(SpiRxDmaLDD, &SpiDmaRxBuffer[0]);
 
-  DMACH1_SetRequestCount(SpiTxDmaLDD, 6);
-  DMACH2_SetRequestCount(SpiRxDmaLDD, 8);	// We care about 2 bytes, but we are going to get a receive for every
+  /*Replacing with DMA1_SetRequestCount(Channel,RequestCount)*/
+  DMACH1_SetTransactionCount(SpiTxDmaLDD,1);
+  DMACH2_SetTransactionCount(SpiRxDmaLDD,1);
+  DMACH1_SetRequestCount(SpiTxDmaLDD, 1);
+  DMACH2_SetRequestCount(SpiRxDmaLDD, 1);	// We care about 2 bytes, but we are going to get a receive for every
   	  	  	  	  	  	  	  	  	  	  	// transmit byte
+//  DMA1_SetRequestCount(SpiTxDmaLDD,7);
+//  DMA1_SetRequestCount(SpiRxDmaLDD,7);
   DMA1_EnableRequest(SpiTxDmaLDD);
   DMA1_EnableRequest(SpiRxDmaLDD);
 
 
 //  DMACH1_GetTransferCompleteStatus(SpiRxDmaLDD);
 //  DMACH1_GetTransferCompleteStatus(SpiTxDmaLDD);
-  while(!SpiRxDmaComplete || !SpiTxDmaComplete);
+  while(!SpiRxDmaComplete | !SpiTxDmaComplete);
 
   // This is here to see which one gets done first
-//  __asm__("bkpt 255");
+  __asm__("bkpt 255");
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/

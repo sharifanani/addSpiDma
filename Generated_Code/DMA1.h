@@ -7,7 +7,7 @@
 **     Version     : Component 01.039, Driver 01.02, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-26, 16:04, # CodeGen: 50
+**     Date/Time   : 2015-05-27, 12:45, # CodeGen: 57
 **     Abstract    :
 **          This embedded component implements initialization
 **          and runtime handling of an on-chip DMA controller.
@@ -76,6 +76,7 @@
 **         GetError                  - LDD_DMA_TErrorFlags DMA1_GetError(DMA1_TChanDeviceData *ChanDeviceDataPtr);
 **         SetSourceAddress          - LDD_TError DMA1_SetSourceAddress(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
 **         SetDestinationAddress     - LDD_TError DMA1_SetDestinationAddress(DMA1_TChanDeviceData...
+**         SetTransactionCount       - LDD_TError DMA1_SetTransactionCount(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
 **         SetRequestCount           - LDD_TError DMA1_SetRequestCount(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
@@ -150,6 +151,7 @@
 #define DMA1_GetError_METHOD_ENABLED   /*!< GetError method of the component DMA1 is enabled (generated) */
 #define DMA1_SetSourceAddress_METHOD_ENABLED /*!< SetSourceAddress method of the component DMA1 is enabled (generated) */
 #define DMA1_SetDestinationAddress_METHOD_ENABLED /*!< SetDestinationAddress method of the component DMA1 is enabled (generated) */
+#define DMA1_SetTransactionCount_METHOD_ENABLED /*!< SetTransactionCount method of the component DMA1 is enabled (generated) */
 #define DMA1_SetRequestCount_METHOD_ENABLED /*!< SetRequestCount method of the component DMA1 is enabled (generated) */
 
 /* Static channel constants. This constants are used to initialize DMA1_TChnInit.ChnNum variable */
@@ -436,6 +438,32 @@ LDD_TError DMA1_SetSourceAddress(DMA1_TChanDeviceData *ChanDeviceDataPtr, LDD_DM
 */
 /* ===================================================================*/
 LDD_TError DMA1_SetDestinationAddress(DMA1_TChanDeviceData *ChanDeviceDataPtr, LDD_DMA_TData *Address);
+
+/*
+** ===================================================================
+**     Method      :  DMA1_SetTransactionCount (component DMAController)
+*/
+/*!
+**     @brief
+**         Sets number of DMA (read/write) transactions performed after
+**         next request is asserted. Please note the this value doesn't
+**         represent number of transferred bytes but number on DMA
+**         (read/write) transaction units.
+**     @param
+**         ChanDeviceDataPtr - DMA channel
+**                           data structure pointer returned by
+**                           [InitChannel()] method.
+**     @param
+**         TransactionCount - Number of R/W
+**                           transaction performed after next request is
+**                           asserted.
+**     @return
+**                         - Error code, possible codes: 
+**                           - ERR_OK - OK. 
+**                           - ERR_DISABLED - Component is disabled.
+*/
+/* ===================================================================*/
+LDD_TError DMA1_SetTransactionCount(DMA1_TChanDeviceData *ChanDeviceDataPtr, LDD_DMA_TTransactionCount TransactionCount);
 
 /*
 ** ===================================================================

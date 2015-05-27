@@ -7,7 +7,7 @@
 **     Version     : Component 01.039, Driver 01.02, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-26, 16:04, # CodeGen: 50
+**     Date/Time   : 2015-05-27, 12:45, # CodeGen: 57
 **     Abstract    :
 **          This embedded component implements initialization
 **          and runtime handling of an on-chip DMA controller.
@@ -76,6 +76,7 @@
 **         GetError                  - LDD_DMA_TErrorFlags DMA1_GetError(DMA1_TChanDeviceData *ChanDeviceDataPtr);
 **         SetSourceAddress          - LDD_TError DMA1_SetSourceAddress(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
 **         SetDestinationAddress     - LDD_TError DMA1_SetDestinationAddress(DMA1_TChanDeviceData...
+**         SetTransactionCount       - LDD_TError DMA1_SetTransactionCount(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
 **         SetRequestCount           - LDD_TError DMA1_SetRequestCount(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
@@ -768,6 +769,44 @@ LDD_TError DMA1_SetDestinationAddress(DMA1_TChanDeviceData *ChanDeviceDataPtr, L
     return ERR_PARAM_ADDRESS;
   }
   DMA1__SetDstAddress(((DMA1_TChnDevData *)ChanDeviceDataPtr)->TCDPtr, (uint32_t)Address);
+  return ERR_OK;
+}
+
+/*
+** ===================================================================
+**     Method      :  DMA1_SetTransactionCount (component DMAController)
+*/
+/*!
+**     @brief
+**         Sets number of DMA (read/write) transactions performed after
+**         next request is asserted. Please note the this value doesn't
+**         represent number of transferred bytes but number on DMA
+**         (read/write) transaction units.
+**     @param
+**         ChanDeviceDataPtr - DMA channel
+**                           data structure pointer returned by
+**                           [InitChannel()] method.
+**     @param
+**         TransactionCount - Number of R/W
+**                           transaction performed after next request is
+**                           asserted.
+**     @return
+**                         - Error code, possible codes: 
+**                           - ERR_OK - OK. 
+**                           - ERR_DISABLED - Component is disabled.
+*/
+/* ===================================================================*/
+LDD_TError DMA1_SetTransactionCount(DMA1_TChanDeviceData *ChanDeviceDataPtr, LDD_DMA_TTransactionCount TransactionCount)
+{
+  DMA1_TChnDevData                *ChnDevDataPtr = (DMA1_TChnDevData *)ChanDeviceDataPtr;
+  DMA1_TTCD                       *TCDPtr = ChnDevDataPtr->TCDPtr;
+
+  /* This test can be disabled by setting the "Ignore state checking"
+     property to the "yes" value in the "Configuration inspector" */
+  if (!ChnDevDataPtr->EnUser) {
+    return ERR_DISABLED;
+  }
+  DMA1__SetByteCount32(TCDPtr, (TransactionCount * ChnDevDataPtr->RWTransactionUint));
   return ERR_OK;
 }
 

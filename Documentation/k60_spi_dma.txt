@@ -30,6 +30,8 @@ Module "DMACH1"    (component DMAChannel_LDD)
    - DMACH1_GetError -Returns channel error flags and clears these flags.
    - DMACH1_SetSourceAddress -Sets source(read) transaction address.
    - DMACH1_SetDestinationAddress -Sets destination(write) transaction address.
+   - DMACH1_SetTransactionCount -Sets number of R/W transaction performed after next request is asserted. Please note the this 
+                value doesn't represent number of transferred bytes but number on R/W transaction units.
    - DMACH1_SetRequestCount -Sets number of requests required to complete transfer.
 
 Module "DMACH2"    (component DMAChannel_LDD)
@@ -51,6 +53,8 @@ Module "DMACH2"    (component DMAChannel_LDD)
    - DMACH2_GetError -Returns channel error flags and clears these flags.
    - DMACH2_SetSourceAddress -Sets source(read) transaction address.
    - DMACH2_SetDestinationAddress -Sets destination(write) transaction address.
+   - DMACH2_SetTransactionCount -Sets number of R/W transaction performed after next request is asserted. Please note the this 
+                value doesn't represent number of transferred bytes but number on R/W transaction units.
    - DMACH2_SetRequestCount -Sets number of requests required to complete transfer.
 
 Module "SPI2"      (component Init_SPI_VAR0)

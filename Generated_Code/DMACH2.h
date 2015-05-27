@@ -7,7 +7,7 @@
 **     Version     : Component 01.053, Driver 01.01, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-26, 16:04, # CodeGen: 50
+**     Date/Time   : 2015-05-27, 11:58, # CodeGen: 53
 **     Abstract    :
 **          This embedded component implements
 **          a DMA transfer channel descriptor definition.
@@ -71,6 +71,7 @@
 **         GetError                  - LDD_DMA_TErrorFlags DMACH2_GetError(LDD_TDeviceData *DeviceDataPtr);
 **         SetSourceAddress          - LDD_TError DMACH2_SetSourceAddress(LDD_TDeviceData *DeviceDataPtr,...
 **         SetDestinationAddress     - LDD_TError DMACH2_SetDestinationAddress(LDD_TDeviceData *DeviceDataPtr,...
+**         SetTransactionCount       - LDD_TError DMACH2_SetTransactionCount(LDD_TDeviceData *DeviceDataPtr,...
 **         SetRequestCount           - LDD_TError DMACH2_SetRequestCount(LDD_TDeviceData *DeviceDataPtr,...
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
@@ -147,6 +148,7 @@
 #define DMACH2_GetError_METHOD_ENABLED /*!< GetError method of the component DMACH2 is enabled (generated) */
 #define DMACH2_SetSourceAddress_METHOD_ENABLED /*!< SetSourceAddress method of the component DMACH2 is enabled (generated) */
 #define DMACH2_SetDestinationAddress_METHOD_ENABLED /*!< SetDestinationAddress method of the component DMACH2 is enabled (generated) */
+#define DMACH2_SetTransactionCount_METHOD_ENABLED /*!< SetTransactionCount method of the component DMACH2 is enabled (generated) */
 #define DMACH2_SetRequestCount_METHOD_ENABLED /*!< SetRequestCount method of the component DMACH2 is enabled (generated) */
 
 /* Events configuration constants - generated for all enabled component's events */
@@ -359,6 +361,31 @@ LDD_TError DMACH2_SetSourceAddress(LDD_TDeviceData *DeviceDataPtr, LDD_DMA_TData
 */
 /* ===================================================================*/
 LDD_TError DMACH2_SetDestinationAddress(LDD_TDeviceData *DeviceDataPtr, LDD_DMA_TData *Address);
+
+/*
+** ===================================================================
+**     Method      :  DMACH2_SetTransactionCount (component DMAChannel_LDD)
+*/
+/*!
+**     @brief
+**         Sets number of R/W transaction performed after next request
+**         is asserted. Please note the this value doesn't represent
+**         number of transferred bytes but number on R/W transaction
+**         units.
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by [Init] method.
+**     @param
+**         TransactionCount - Number of R/W
+**                           transaction performed after next request is
+**                           asserted.
+**     @return
+**                         - Error code, possible codes: 
+**                           - ERR_OK - OK. 
+**                           - ERR_DISABLED - Component is disabled.
+*/
+/* ===================================================================*/
+LDD_TError DMACH2_SetTransactionCount(LDD_TDeviceData *DeviceDataPtr, LDD_DMA_TTransactionCount TransactionCount);
 
 /*
 ** ===================================================================

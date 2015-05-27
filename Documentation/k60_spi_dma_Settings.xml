@@ -479,7 +479,7 @@ PE_DEBUGHALT();
       <SetSourceTransactionSize v="don&amp;apos;t generate code" />
       <SetDestinationAddress v="generate code" />
       <SetDestinationTransactionSize v="don&amp;apos;t generate code" />
-      <SetTransactionCount v="don&amp;apos;t generate code" />
+      <SetTransactionCount v="generate code" />
       <SetRequestCount v="generate code" />
       <GetDriverState v="don&amp;apos;t generate code" />
       <SetOperationMode v="don&amp;apos;t generate code" />
@@ -580,7 +580,7 @@ PE_DEBUGHALT();
       <SetSourceTransactionSize v="don&amp;apos;t generate code" />
       <SetDestinationAddress v="generate code" />
       <SetDestinationTransactionSize v="don&amp;apos;t generate code" />
-      <SetTransactionCount v="don&amp;apos;t generate code" />
+      <SetTransactionCount v="generate code" />
       <SetRequestCount v="generate code" />
       <GetDriverState v="don&amp;apos;t generate code" />
       <SetOperationMode v="don&amp;apos;t generate code" />
