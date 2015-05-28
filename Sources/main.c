@@ -57,7 +57,9 @@ void DumpDmaRx(LDD_TDeviceDataPtr* DmaCh)
 {
 	GPIOD_PSOR = (1<<7);//test pin, remove from final release
 	DMA1_Disable(DmaCh);
-	DMA_TCD1_DOFF=0x00;
+	DMA_TCD1_DOFF=0x00; //THIS REGISTER IS CHANNEL SPECIFIC.
+						//@todo? change register using passed
+						//channel?
 	DMA1_Enable(DmaCh);
 	GPIOD_PCOR = (1<<7);//test pin, remove from final release
 	//3.38us total for switch.
