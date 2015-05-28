@@ -48,6 +48,20 @@ uint8_t SpiDmaRxBuffer[300];
 volatile int SpiTxDmaComplete;
 volatile int SpiRxDmaComplete;
 
+/*Function that changes the offset of DMACH2 (Physical channel 1) to 0,
+ * used for trash/tx only operation.
+ *
+ * @todo: add trash byte pointer argument
+ */
+void DumpDmaRx(LDD_TDeviceDataPtr* DmaCh)
+{
+	GPIOD_PSOR = (1<<7);//test pin, remove from final release
+	DMA1_Disable(DmaCh);
+	DMA_TCD1_DOFF=0x00;
+	DMA1_Enable(DmaCh);
+	GPIOD_PCOR = (1<<7);//test pin, remove from final release
+	//3.38us total for switch.
+}
 
 /*
  * Get the address the high 16 bits of a 32 bit word
@@ -58,6 +72,8 @@ volatile int SpiRxDmaComplete;
 int main(void)
 /*lint -restore Enable MISRA rule (6.3) checking. */
 {
+	/*GPIO Initialization on GPIOA4 set to output*/
+
   /* Write your local variable definition here */
 	LDD_TDeviceDataPtr SpiTxDmaLDD;
 	LDD_TDeviceDataPtr SpiRxDmaLDD;
@@ -66,14 +82,23 @@ int main(void)
   PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
 
+  //GPIO Initialization for testing switching timing
+  SIM_SCGC5  |= (1<<12);
+  PORTD_PCR7 |= (1<<8);
+  GPIOD_PDDR |= (1<<7);//test
+  //-------------------------------------------------
+
   /* Write your code here */
   SpiTxDmaLDD = DMACH1_Init(NULL);
   SpiRxDmaLDD = DMACH2_Init(NULL);
 
+  //Pull test pin low
+  GPIOD_PCOR = (1<<7);//test
+
   // Enable the module in processor expert internally
   DMA1_Enable(SpiTxDmaLDD);
   DMA1_Enable(SpiRxDmaLDD);
-
+  DumpDmaRx(SpiRxDmaLDD);
   SpiRxDmaComplete = 0;
   SpiTxDmaComplete = 0;
 
@@ -85,31 +110,23 @@ int main(void)
   SpiDmaTxBuffer[3] = SPI_PUSHR_PCS(1) | SPI_PUSHR_CONT_MASK | 0X00;
   SpiDmaTxBuffer[4] = SPI_PUSHR_PCS(1) | SPI_PUSHR_CONT_MASK | 0X00;
   SpiDmaTxBuffer[5] = SPI_PUSHR_PCS(1) | SPI_PUSHR_CONT_MASK | 0X00;
-  SpiDmaTxBuffer[6] = SPI_PUSHR_PCS(1) | SPI_PUSHR_CONT_MASK | 0X00;
-  SpiDmaTxBuffer[7] = SPI_PUSHR_PCS(1) | SPI_PUSHR_CONT_MASK | 0X00;
-  SpiDmaTxBuffer[8] = SPI_PUSHR_PCS(1) | SPI_PUSHR_EOQ_MASK  | 0x00;		// Transmit an empty byte to clock in the RX byte
+  SpiDmaTxBuffer[6] = SPI_PUSHR_PCS(1) | SPI_PUSHR_EOQ_MASK  | 0x00;		// Transmit an empty byte to clock in the RX byte
   DMACH1_SetSourceAddress(SpiTxDmaLDD, &SpiDmaTxBuffer[0]);
   DMACH1_SetDestinationAddress(SpiTxDmaLDD, &SPI2_PUSHR);
 
   DMACH2_SetSourceAddress(SpiRxDmaLDD, &SPI2_POPR);
   DMACH2_SetDestinationAddress(SpiRxDmaLDD, &SpiDmaRxBuffer[0]);
 
-  /*Replacing with DMA1_SetRequestCount(Channel,RequestCount)*/
+  //added a SetTransactionCount API from ProcessorExpert. Set to one
   DMACH1_SetTransactionCount(SpiTxDmaLDD,1);
   DMACH2_SetTransactionCount(SpiRxDmaLDD,1);
   DMACH1_SetRequestCount(SpiTxDmaLDD, 1);
   DMACH2_SetRequestCount(SpiRxDmaLDD, 1);	// We care about 2 bytes, but we are going to get a receive for every
    	  	  	  	  	  	  	// transmit byte
-//  DMA1_SetRequestCount(SpiTxDmaLDD,7);
-//  DMA1_SetRequestCount(SpiRxDmaLDD,7);
+
+  //Enable requests for Tx and Rx
   DMA1_EnableRequest(SpiRxDmaLDD);
   DMA1_EnableRequest(SpiTxDmaLDD);
-
-
-
-//  DMACH1_GetTransferCompleteStatus(SpiRxDmaLDD);
-//  DMACH1_GetTransferCompleteStatus(SpiTxDmaLDD);
-
   while(!SpiRxDmaComplete | !SpiTxDmaComplete);
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
