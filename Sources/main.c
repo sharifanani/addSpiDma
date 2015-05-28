@@ -53,11 +53,23 @@ volatile int SpiRxDmaComplete;
  *
  * @todo: add trash byte pointer argument
  */
-void DumpDmaRx(LDD_TDeviceDataPtr* DmaCh)
+
+typedef enum _eDmaChan_e
+{
+	eDmaCh0,
+	eDmaCh1,
+}eDmaChans_t;
+void DumpDmaRx(LDD_TDeviceDataPtr* DmaCh, eDmaChans_t PhysicalChannelNum)
 {
 	GPIOD_PSOR = (1<<7);//test pin, remove from final release
 	DMA1_Disable(DmaCh);
-	DMA_TCD1_DOFF=0x00; //THIS REGISTER IS CHANNEL SPECIFIC.
+	switch(PhysicalChannelNum){
+	case eDmaCh0:
+		DMA_TCD0_DOFF=0x00;
+	case eDmaCh1:
+		DMA_TCD1_DOFF=0x00;
+	}
+	//DMA_TCD1_DOFF=0x00; //THIS REGISTER IS CHANNEL SPECIFIC.
 						//@todo? change register using passed
 						//channel?
 	DMA1_Enable(DmaCh);
