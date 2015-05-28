@@ -48,17 +48,21 @@ uint8_t SpiDmaRxBuffer[300];
 volatile int SpiTxDmaComplete;
 volatile int SpiRxDmaComplete;
 
-/*Function that changes the offset of DMACH2 (Physical channel 1) to 0,
- * used for trash/tx only operation.
- *
- * @todo: add trash byte pointer argument
- */
 
 typedef enum _eDmaChan_e
 {
 	eDmaCh0,
 	eDmaCh1,
 }eDmaChans_t;
+
+uint8_t PhysicalRxChannel = 0; //Channel Number tied to the Rx buffer.
+
+/*Function that changes the offset of DMACH2 (Physical channel 1) to 0,
+ * used for trash/tx only operation.
+ *
+ * @todo: add trash byte pointer argument
+ */
+
 void DumpDmaRx(LDD_TDeviceDataPtr* DmaCh, eDmaChans_t PhysicalChannelNum)
 {
 	GPIOD_PSOR = (1<<7);//test pin, remove from final release
