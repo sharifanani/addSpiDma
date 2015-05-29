@@ -35,10 +35,10 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 #include "SPI1.h"
+#include "SpiBus2.h"
+#include "DmaTxCh.h"
+#include "DmaRxCh.h"
 #include "DMA1.h"
-#include "DMACH1.h"
-#include "DMACH2.h"
-#include "SPI2.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -62,9 +62,9 @@ void Cpu_OnNMIINT(void);
 
 /*
 ** ===================================================================
-**     Event       :  DMACH2_OnComplete (module Events)
+**     Event       :  DmaRxCh_OnComplete (module Events)
 **
-**     Component   :  DMACH2 [DMAChannel_LDD]
+**     Component   :  DmaRxCh [DMAChannel_LDD]
 */
 /*!
 **     @brief
@@ -78,13 +78,13 @@ void Cpu_OnNMIINT(void);
 **                           as the parameter of Init method.
 */
 /* ===================================================================*/
-void DMACH2_OnComplete(LDD_TUserData *UserDataPtr);
+void DmaRxCh_OnComplete(LDD_TUserData *UserDataPtr);
 
 /*
 ** ===================================================================
-**     Event       :  DMACH2_OnError (module Events)
+**     Event       :  DmaRxCh_OnError (module Events)
 **
-**     Component   :  DMACH2 [DMAChannel_LDD]
+**     Component   :  DmaRxCh [DMAChannel_LDD]
 */
 /*!
 **     @brief
@@ -96,13 +96,13 @@ void DMACH2_OnComplete(LDD_TUserData *UserDataPtr);
 **                           as the parameter of Init method.
 */
 /* ===================================================================*/
-void DMACH2_OnError(LDD_TUserData *UserDataPtr);
+void DmaRxCh_OnError(LDD_TUserData *UserDataPtr);
 
 /*
 ** ===================================================================
-**     Event       :  DMACH1_OnComplete (module Events)
+**     Event       :  DmaTxCh_OnComplete (module Events)
 **
-**     Component   :  DMACH1 [DMAChannel_LDD]
+**     Component   :  DmaTxCh [DMAChannel_LDD]
 */
 /*!
 **     @brief
@@ -116,13 +116,13 @@ void DMACH2_OnError(LDD_TUserData *UserDataPtr);
 **                           as the parameter of Init method.
 */
 /* ===================================================================*/
-void DMACH1_OnComplete(LDD_TUserData *UserDataPtr);
+void DmaTxCh_OnComplete(LDD_TUserData *UserDataPtr);
 
 /*
 ** ===================================================================
-**     Event       :  DMACH1_OnError (module Events)
+**     Event       :  DmaTxCh_OnError (module Events)
 **
-**     Component   :  DMACH1 [DMAChannel_LDD]
+**     Component   :  DmaTxCh [DMAChannel_LDD]
 */
 /*!
 **     @brief
@@ -134,7 +134,45 @@ void DMACH1_OnComplete(LDD_TUserData *UserDataPtr);
 **                           as the parameter of Init method.
 */
 /* ===================================================================*/
-void DMACH1_OnError(LDD_TUserData *UserDataPtr);
+void DmaTxCh_OnError(LDD_TUserData *UserDataPtr);
+
+/*
+** ===================================================================
+**     Event       :  SpiBus2_OnBlockSent (module Events)
+**
+**     Component   :  SpiBus2 [SPIMaster_LDD]
+*/
+/*!
+**     @brief
+**         This event is called after the last character from the
+**         output buffer is moved to the transmitter. This event is
+**         available only if the SendBlock method is enabled.
+**     @param
+**         UserDataPtr     - Pointer to the user or
+**                           RTOS specific data. The pointer is passed
+**                           as the parameter of Init method. 
+*/
+/* ===================================================================*/
+void SpiBus2_OnBlockSent(LDD_TUserData *UserDataPtr);
+
+/*
+** ===================================================================
+**     Event       :  SpiBus2_OnBlockReceived (module Events)
+**
+**     Component   :  SpiBus2 [SPIMaster_LDD]
+*/
+/*!
+**     @brief
+**         This event is called when the requested number of data is
+**         moved to the input buffer. This method is available only if
+**         the ReceiveBlock method is enabled.
+**     @param
+**         UserDataPtr     - Pointer to the user or
+**                           RTOS specific data. The pointer is passed
+**                           as the parameter of Init method. 
+*/
+/* ===================================================================*/
+void SpiBus2_OnBlockReceived(LDD_TUserData *UserDataPtr);
 
 /* END Events */
 

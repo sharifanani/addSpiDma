@@ -1,16 +1,15 @@
-Sources/Events.o: ../Sources/Events.c \
- C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/Cpu.h \
+Generated_Code/DmaRxCh.o: ../Generated_Code/DmaRxCh.c \
+ C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Sources/Events.h \
  C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/PE_Types.h \
  C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/PE_Error.h \
  C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/PE_Const.h \
  C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/IO_Map.h \
  C:\Freescale\KDS_3.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles/MK60D10.h \
- ../Sources/Events.h \
+ C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/SPI1.h \
  C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/PE_Types.h \
  C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/PE_Error.h \
  C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/PE_Const.h \
  C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/IO_Map.h \
- C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/SPI1.h \
  C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/Cpu.h \
  C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/SpiBus2.h \
  C:\Freescale\KDS_3.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/SPI_PDD.h \
@@ -24,9 +23,10 @@ Sources/Events.o: ../Sources/Events.c \
  C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/DmaRxCh.h \
  C:\Freescale\KDS_3.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/DMA_PDD.h \
  C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/DmaRxCh.h \
- C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/DMA1.h
+ C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/DMA1.h \
+ ../Generated_Code/DmaRxCh.h
 
-C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/Cpu.h:
+C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Sources/Events.h:
 
 C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/PE_Types.h:
 
@@ -38,7 +38,7 @@ C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/IO_Map.h:
 
 C:\Freescale\KDS_3.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles/MK60D10.h:
 
-../Sources/Events.h:
+C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/SPI1.h:
 
 C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/PE_Types.h:
 
@@ -47,8 +47,6 @@ C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/PE_Error.h:
 C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/PE_Const.h:
 
 C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/IO_Map.h:
-
-C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/SPI1.h:
 
 C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/Cpu.h:
 
@@ -77,3 +75,5 @@ C:\Freescale\KDS_3.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/DMA_PDD.h:
 C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/DmaRxCh.h:
 
 C:/Users/sanani/Documents/GitHub/k60_spi_dma_2/Generated_Code/DMA1.h:
+
+../Generated_Code/DmaRxCh.h:

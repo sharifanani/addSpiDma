@@ -27,7 +27,7 @@
 
 \page page_components Components 
 - \subpage SPI1
-- \subpage SPI2
+- \subpage SpiBus2
 
 */
 

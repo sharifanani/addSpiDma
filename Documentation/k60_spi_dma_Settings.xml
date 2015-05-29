@@ -352,7 +352,7 @@ PE_DEBUGHALT();
           <group name="Attribute set 0">
             <Width v="8 bits" />
             <MSB_first v="yes" />
-            <Clock_polarity v="Low" />
+            <Clock_polarity v="High" />
             <Clock_phase v="Capture on leading edge" />
             <Parity v="None" />
             <Chip_select_toggling v="no" />
@@ -433,7 +433,16 @@ PE_DEBUGHALT();
         <enumgroup name="Arbitration type" v="Fixed">
           <Priority v="3" />
         </enumgroup>
-        <boolgroup name="Interrupt service" v="Disabled" />
+        <boolgroup name="Interrupt service" v="Enabled">
+          <group name="Transfer complete interrupt">
+            <Interrupt_vector v="INT_DMA1" />
+            <Interrupt_priority v="8" />
+          </group>
+          <group name="Error interrupt">
+            <Interrupt_vector v="INT_DMA_Error" />
+            <Interrupt_priority v="medium priority" />
+          </group>
+        </boolgroup>
       </enumgroup>
       <External_object_declaration>
         <StrgList></StrgList>
@@ -498,7 +507,7 @@ PE_DEBUGHALT();
       <SetRequestCount v="generate code" />
       <GetDriverState v="don&amp;apos;t generate code" />
       <SetOperationMode v="don&amp;apos;t generate code" />
-      <Main v="generate code" />
+      <Main v="don&amp;apos;t generate code" />
     </Methods>
     <Events>
       <Event_module_name v="Events" />
@@ -525,7 +534,16 @@ PE_DEBUGHALT();
         <enumgroup name="Arbitration type" v="Fixed">
           <Priority v="4" />
         </enumgroup>
-        <boolgroup name="Interrupt service" v="Disabled" />
+        <boolgroup name="Interrupt service" v="Enabled">
+          <group name="Transfer complete interrupt">
+            <Interrupt_vector v="INT_DMA2" />
+            <Interrupt_priority v="8" />
+          </group>
+          <group name="Error interrupt">
+            <Interrupt_vector v="INT_DMA_Error" />
+            <Interrupt_priority v="medium priority" />
+          </group>
+        </boolgroup>
       </enumgroup>
       <External_object_declaration>
         <StrgList></StrgList>
@@ -590,7 +608,7 @@ PE_DEBUGHALT();
       <SetRequestCount v="generate code" />
       <GetDriverState v="don&amp;apos;t generate code" />
       <SetOperationMode v="don&amp;apos;t generate code" />
-      <Main v="generate code" />
+      <Main v="don&amp;apos;t generate code" />
     </Methods>
     <Events>
       <Event_module_name v="Events" />
@@ -627,7 +645,16 @@ PE_DEBUGHALT();
             <Can_be_preempted v="no" />
             <Can_preempt v="no" />
           </enumgroup>
-          <boolgroup name="Interrupt service" v="Disabled" />
+          <boolgroup name="Interrupt service" v="Enabled">
+            <group name="Transfer complete interrupt">
+              <Interrupt_vector v="INT_DMA1" />
+              <Interrupt_priority v="8" />
+            </group>
+            <group name="Error interrupt">
+              <Interrupt_vector v="INT_DMA_Error" />
+              <Interrupt_priority v="medium priority" />
+            </group>
+          </boolgroup>
         </group>
         <group name="Channel settings">
           <Channel v="DMA_Channel2" />
@@ -639,7 +666,16 @@ PE_DEBUGHALT();
             <Can_be_preempted v="no" />
             <Can_preempt v="no" />
           </enumgroup>
-          <boolgroup name="Interrupt service" v="Disabled" />
+          <boolgroup name="Interrupt service" v="Enabled">
+            <group name="Transfer complete interrupt">
+              <Interrupt_vector v="INT_DMA2" />
+              <Interrupt_priority v="8" />
+            </group>
+            <group name="Error interrupt">
+              <Interrupt_vector v="INT_DMA_Error" />
+              <Interrupt_priority v="medium priority" />
+            </group>
+          </boolgroup>
         </group>
       </list>
       <list name="Dynamically allocatable channels" v="0">
