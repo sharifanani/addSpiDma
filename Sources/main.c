@@ -101,10 +101,15 @@ int main(void)
   PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
   SpiBus2DataPtr=SpiBus2_Init(NULL);
+  /*----Additional Setup to make sure all registers are initialized
+   * correctly.
+   * Maybe copy into SpiBus2_Init?
+   */
   SPI2_MCR  = 0x80030100;
   SPI2_TCR  = 0x00;
   SPI2_SR   = 0x42000000;
   SPI2_RSER = 0x03030000 | (1<<28);
+  /*----------------------------------*/
 //  //GPIO Initialization for testing switching timing
 //  SIM_SCGC5  |= (1<<12);
 //  PORTD_PCR7 |= (1<<8);
