@@ -101,8 +101,10 @@ int main(void)
   PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
   SpiBus2_Init(SpiBus2DataPtr);
-  SPI2_RSER |= ((1<<24)|(1<<25)|(1<<16)|(1<<17));
-  SPI2_MCR &= ~((1<<12)|(1<<13));
+  SPI2_MCR  = 0x80030100;
+  SPI2_TCR  = 0x00;
+  SPI2_SR   = 0x42000000;
+  SPI2_RSER = 0x03030000;
 //  //GPIO Initialization for testing switching timing
 //  SIM_SCGC5  |= (1<<12);
 //  PORTD_PCR7 |= (1<<8);
