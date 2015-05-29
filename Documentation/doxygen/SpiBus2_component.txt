@@ -33,7 +33,7 @@ by the component.
 <td class="regNotResetVal">0x81017C01</td>
  <td>SPI2_MCR register, peripheral SpiBus2.</td></tr>
 <tr><td>0x400AC00C</td><td>SPI2_CTAR0</td>
-<td class="regNotResetVal">0xBC543330</td>
+<td class="regNotResetVal">0xBCA42230</td>
  <td>SPI2_CTAR0 register, peripheral SpiBus2.</td></tr>
 <tr><td>0x400AC02C</td><td>SPI2_SR</td>
 <td class="regNotResetVal">0x9A2A0000</td>
@@ -447,7 +447,7 @@ registers of the peripheral(s) configured by the component.
         
 </div>
 <table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x400AC00C</td></tr>
-<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0xBC543330</td></tr>
+<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0xBCA42230</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x78000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
 <tr><td>31</td><td>DBR</td><td>0x01</td><td>Double Baud Rate</td>
@@ -455,8 +455,8 @@ registers of the peripheral(s) configured by the component.
 <tr><td>26</td><td>CPOL</td><td>0x01</td><td>Clock Polarity</td>
 <tr><td>25</td><td>CPHA</td><td>0x00</td><td>Clock Phase</td>
 <tr><td>24</td><td>LSBFE</td><td>0x00</td><td>LSB First</td>
-<tr><td>22 - 23</td><td>PCSSCK</td><td>0x00</td><td>PCS to SCK Delay Prescaler</td>
-<tr><td>20 - 21</td><td>PASC</td><td>0x00</td><td>After SCK Delay Prescaler</td>
+<tr><td>22 - 23</td><td>PCSSCK</td><td>0x02</td><td>PCS to SCK Delay Prescaler</td>
+<tr><td>20 - 21</td><td>PASC</td><td>0x02</td><td>After SCK Delay Prescaler</td>
 <tr><td>18 - 19</td><td>PDT</td><td>0x00</td><td>Delay after Transfer Prescaler</td>
 <tr><td>16 - 17</td><td>PBR</td><td>0x00</td><td>Baud Rate Prescaler</td>
 <tr><td>12 - 15</td><td>CSSCK</td><td>0x00</td><td>PCS to SCK Delay Scaler</td>
@@ -619,8 +619,8 @@ registers of the peripheral(s) configured by the component.
 **                CLK to CS delay index                    : 0
 **            Clock rate                                   : 0.095367 탎
 **            Delay after transfer                         : 2.2 탎
-**            CS to CLK delay                              : 2.2 탎
-**            CLK to CS delay                              : 2.2 탎
+**            CS to CLK delay                              : 2.0 탎
+**            CLK to CS delay                              : 2.0 탎
 **            HW input buffer size                         : 1
 **            HW input watermark                           : 1
 **            HW output buffer size                        : 1

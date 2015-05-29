@@ -7,7 +7,7 @@
 **     Version     : Component 01.111, Driver 01.08, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-29, 12:07, # CodeGen: 70
+**     Date/Time   : 2015-05-29, 13:13, # CodeGen: 71
 **     Abstract    :
 **         This component "SPIMaster_LDD" implements MASTER part of synchronous
 **         serial master-slave communication.
@@ -45,8 +45,8 @@
 **                CLK to CS delay index                    : 0
 **            Clock rate                                   : 0.095367 탎
 **            Delay after transfer                         : 2.2 탎
-**            CS to CLK delay                              : 2.2 탎
-**            CLK to CS delay                              : 2.2 탎
+**            CS to CLK delay                              : 2.0 탎
+**            CLK to CS delay                              : 2.0 탎
 **            HW input buffer size                         : 1
 **            HW input watermark                           : 1
 **            HW output buffer size                        : 1
@@ -246,16 +246,16 @@ LDD_TDeviceData* SpiBus2_Init(LDD_TUserData *UserDataPtr)
              SPI_MCR_CLR_RXF_MASK |
              SPI_MCR_SMPL_PT(0x00) |
              SPI_MCR_HALT_MASK;        /* Set Configuration register */
-  /* SPI2_CTAR0: DBR=1,FMSZ=7,CPOL=1,CPHA=0,LSBFE=0,PCSSCK=1,PASC=1,PDT=1,PBR=0,CSSCK=3,ASC=3,DT=3,BR=0 */
+  /* SPI2_CTAR0: DBR=1,FMSZ=7,CPOL=1,CPHA=0,LSBFE=0,PCSSCK=2,PASC=2,PDT=1,PBR=0,CSSCK=2,ASC=2,DT=3,BR=0 */
   SPI2_CTAR0 = SPI_CTAR_DBR_MASK |
                SPI_CTAR_FMSZ(0x07) |
                SPI_CTAR_CPOL_MASK |
-               SPI_CTAR_PCSSCK(0x01) |
-               SPI_CTAR_PASC(0x01) |
+               SPI_CTAR_PCSSCK(0x02) |
+               SPI_CTAR_PASC(0x02) |
                SPI_CTAR_PDT(0x01) |
                SPI_CTAR_PBR(0x00) |
-               SPI_CTAR_CSSCK(0x03) |
-               SPI_CTAR_ASC(0x03) |
+               SPI_CTAR_CSSCK(0x02) |
+               SPI_CTAR_ASC(0x02) |
                SPI_CTAR_DT(0x03) |
                SPI_CTAR_BR(0x00);      /* Set Clock and Transfer Attributes register */
   /* SPI2_SR: TCF=1,TXRXS=0,??=0,EOQF=1,TFUF=1,??=0,TFFF=1,??=0,??=0,??=0,??=1,??=0,RFOF=1,??=0,RFDF=1,??=0,TXCTR=0,TXNXTPTR=0,RXCTR=0,POPNXTPTR=0 */

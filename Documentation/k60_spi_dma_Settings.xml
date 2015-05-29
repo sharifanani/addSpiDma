@@ -364,8 +364,8 @@ PE_DEBUGHALT();
         </list>
         <Clock_rate v="0.095367 &amp;#181;s" />
         <Delay_after_transfer v="2.2 &amp;#181;s" />
-        <CS_to_CLK_delay v="2.2 &amp;#181;s" />
-        <CLK_to_CS_delay v="2.2 &amp;#181;s" />
+        <CS_to_CLK_delay v="2.0 &amp;#181;s" />
+        <CLK_to_CS_delay v="2.0 &amp;#181;s" />
         <HW_input_buffer_size v="1" />
         <HW_input_watermark v="1" />
         <HW_output_buffer_size v="1" />

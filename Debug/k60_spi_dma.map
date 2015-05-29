@@ -576,7 +576,7 @@ LOAD c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-
                 0x00000400                _cfm
                 0x00000410                . = ALIGN (0x4)
 
-.text           0x00000410     0x10a0
+.text           0x00000410     0x10a4
                 0x00000410                . = ALIGN (0x4)
  *(.text)
  .text          0x00000410       0x54 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtbegin.o
@@ -596,203 +596,203 @@ LOAD c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-
  .text.DmaTxCh_OnError
                 0x000004bc       0x14 ./Sources/Events.o
                 0x000004bc                DmaTxCh_OnError
- .text.main     0x000004d0      0x128 ./Sources/main.o
+ .text.main     0x000004d0      0x12c ./Sources/main.o
                 0x000004d0                main
  .text.__flush_cache
-                0x000005f8       0x14 ./Project_Settings/Startup_Code/startup.o
-                0x000005f8                __flush_cache
+                0x000005fc       0x14 ./Project_Settings/Startup_Code/startup.o
+                0x000005fc                __flush_cache
  .text.__copy_rom_section
-                0x0000060c       0xe4 ./Project_Settings/Startup_Code/startup.o
-                0x0000060c                __copy_rom_section
+                0x00000610       0xe4 ./Project_Settings/Startup_Code/startup.o
+                0x00000610                __copy_rom_section
  .text.__copy_rom_sections_to_ram
-                0x000006f0       0xc4 ./Project_Settings/Startup_Code/startup.o
-                0x000006f0                __copy_rom_sections_to_ram
+                0x000006f4       0xc4 ./Project_Settings/Startup_Code/startup.o
+                0x000006f4                __copy_rom_sections_to_ram
  .text.zero_fill_bss
-                0x000007b4       0xb4 ./Project_Settings/Startup_Code/startup.o
+                0x000007b8       0xb4 ./Project_Settings/Startup_Code/startup.o
  .text.__init_registers
-                0x00000868        0xc ./Project_Settings/Startup_Code/startup.o
-                0x00000868                __init_registers
+                0x0000086c        0xc ./Project_Settings/Startup_Code/startup.o
+                0x0000086c                __init_registers
  .text.__init_user
-                0x00000874        0xc ./Project_Settings/Startup_Code/startup.o
-                0x00000874                __init_user
+                0x00000878        0xc ./Project_Settings/Startup_Code/startup.o
+                0x00000878                __init_user
  .text.__thumb_startup
-                0x00000880       0x4c ./Project_Settings/Startup_Code/startup.o
-                0x00000880                __thumb_startup
+                0x00000884       0x4c ./Project_Settings/Startup_Code/startup.o
+                0x00000884                __thumb_startup
  .text.Cpu_INT_NMIInterrupt
-                0x000008cc       0x1c ./Generated_Code/Cpu.o
-                0x000008cc                Cpu_INT_NMIInterrupt
+                0x000008d0       0x1c ./Generated_Code/Cpu.o
+                0x000008d0                Cpu_INT_NMIInterrupt
  .text.Cpu_Interrupt
-                0x000008e8       0x18 ./Generated_Code/Cpu.o
-                0x000008e8                Cpu_Interrupt
+                0x000008ec       0x18 ./Generated_Code/Cpu.o
+                0x000008ec                Cpu_Interrupt
  .text.__init_hardware
-                0x00000900      0x11c ./Generated_Code/Cpu.o
-                0x00000900                __init_hardware
+                0x00000904      0x11c ./Generated_Code/Cpu.o
+                0x00000904                __init_hardware
  .text.Cpu_SetBASEPRI
-                0x00000a1c       0x18 ./Generated_Code/Cpu.o
-                0x00000a1c                Cpu_SetBASEPRI
+                0x00000a20       0x18 ./Generated_Code/Cpu.o
+                0x00000a20                Cpu_SetBASEPRI
  .text.PE_low_level_init
-                0x00000a34      0x130 ./Generated_Code/Cpu.o
-                0x00000a34                PE_low_level_init
+                0x00000a38      0x130 ./Generated_Code/Cpu.o
+                0x00000a38                PE_low_level_init
  .text.GetTransactionUnitSize
-                0x00000b64       0x48 ./Generated_Code/DMA1.o
+                0x00000b68       0x48 ./Generated_Code/DMA1.o
  .text.CancelTransfer
-                0x00000bac       0xa8 ./Generated_Code/DMA1.o
+                0x00000bb0       0xa8 ./Generated_Code/DMA1.o
  .text.DMA1_Init
-                0x00000c54      0x100 ./Generated_Code/DMA1.o
-                0x00000c54                DMA1_Init
+                0x00000c58      0x100 ./Generated_Code/DMA1.o
+                0x00000c58                DMA1_Init
  .text.DMA1_InitChannel
-                0x00000d54       0xb4 ./Generated_Code/DMA1.o
-                0x00000d54                DMA1_InitChannel
+                0x00000d58       0xb4 ./Generated_Code/DMA1.o
+                0x00000d58                DMA1_InitChannel
  .text.DMA1_Enable
-                0x00000e08       0x20 ./Generated_Code/DMA1.o
-                0x00000e08                DMA1_Enable
+                0x00000e0c       0x20 ./Generated_Code/DMA1.o
+                0x00000e0c                DMA1_Enable
  .text.DMA1_EnableRequest
-                0x00000e28       0x38 ./Generated_Code/DMA1.o
-                0x00000e28                DMA1_EnableRequest
+                0x00000e2c       0x38 ./Generated_Code/DMA1.o
+                0x00000e2c                DMA1_EnableRequest
  .text.DMA1_SetSourceAddress
-                0x00000e60       0x48 ./Generated_Code/DMA1.o
-                0x00000e60                DMA1_SetSourceAddress
+                0x00000e64       0x48 ./Generated_Code/DMA1.o
+                0x00000e64                DMA1_SetSourceAddress
  .text.DMA1_SetDestinationAddress
-                0x00000ea8       0x48 ./Generated_Code/DMA1.o
-                0x00000ea8                DMA1_SetDestinationAddress
+                0x00000eac       0x48 ./Generated_Code/DMA1.o
+                0x00000eac                DMA1_SetDestinationAddress
  .text.DMA1_SetTransactionCount
-                0x00000ef0       0x3c ./Generated_Code/DMA1.o
-                0x00000ef0                DMA1_SetTransactionCount
+                0x00000ef4       0x3c ./Generated_Code/DMA1.o
+                0x00000ef4                DMA1_SetTransactionCount
  .text.DMA1_SetRequestCount
-                0x00000f2c       0xb0 ./Generated_Code/DMA1.o
-                0x00000f2c                DMA1_SetRequestCount
+                0x00000f30       0xb0 ./Generated_Code/DMA1.o
+                0x00000f30                DMA1_SetRequestCount
  .text.HandleInterrupt
-                0x00000fdc       0xe8 ./Generated_Code/DMA1.o
+                0x00000fe0       0xe8 ./Generated_Code/DMA1.o
  .text.DMA1_INT_DMA1_TransferComplete_ISR
-                0x000010c4       0x2c ./Generated_Code/DMA1.o
-                0x000010c4                DMA1_INT_DMA1_TransferComplete_ISR
+                0x000010c8       0x2c ./Generated_Code/DMA1.o
+                0x000010c8                DMA1_INT_DMA1_TransferComplete_ISR
  .text.DMA1_INT_DMA2_TransferComplete_ISR
-                0x000010f0       0x30 ./Generated_Code/DMA1.o
-                0x000010f0                DMA1_INT_DMA2_TransferComplete_ISR
+                0x000010f4       0x30 ./Generated_Code/DMA1.o
+                0x000010f4                DMA1_INT_DMA2_TransferComplete_ISR
  .text.DMA1_INT_DMA_Error_TransferError_ISR
-                0x00001120       0x38 ./Generated_Code/DMA1.o
-                0x00001120                DMA1_INT_DMA_Error_TransferError_ISR
+                0x00001124       0x38 ./Generated_Code/DMA1.o
+                0x00001124                DMA1_INT_DMA_Error_TransferError_ISR
  .text.DmaRxCh_Init
-                0x00001158       0x48 ./Generated_Code/DmaRxCh.o
-                0x00001158                DmaRxCh_Init
+                0x0000115c       0x48 ./Generated_Code/DmaRxCh.o
+                0x0000115c                DmaRxCh_Init
  .text.DmaRxCh_SetSourceAddress
-                0x000011a0       0x1c ./Generated_Code/DmaRxCh.o
-                0x000011a0                DmaRxCh_SetSourceAddress
+                0x000011a4       0x1c ./Generated_Code/DmaRxCh.o
+                0x000011a4                DmaRxCh_SetSourceAddress
  .text.DmaRxCh_SetDestinationAddress
-                0x000011bc       0x1c ./Generated_Code/DmaRxCh.o
-                0x000011bc                DmaRxCh_SetDestinationAddress
+                0x000011c0       0x1c ./Generated_Code/DmaRxCh.o
+                0x000011c0                DmaRxCh_SetDestinationAddress
  .text.DmaRxCh_SetTransactionCount
-                0x000011d8       0x1c ./Generated_Code/DmaRxCh.o
-                0x000011d8                DmaRxCh_SetTransactionCount
+                0x000011dc       0x1c ./Generated_Code/DmaRxCh.o
+                0x000011dc                DmaRxCh_SetTransactionCount
  .text.DmaRxCh_SetRequestCount
-                0x000011f4       0x1c ./Generated_Code/DmaRxCh.o
-                0x000011f4                DmaRxCh_SetRequestCount
+                0x000011f8       0x1c ./Generated_Code/DmaRxCh.o
+                0x000011f8                DmaRxCh_SetRequestCount
  .text.DmaTxCh_Init
-                0x00001210       0x48 ./Generated_Code/DmaTxCh.o
-                0x00001210                DmaTxCh_Init
+                0x00001214       0x48 ./Generated_Code/DmaTxCh.o
+                0x00001214                DmaTxCh_Init
  .text.DmaTxCh_SetSourceAddress
-                0x00001258       0x1c ./Generated_Code/DmaTxCh.o
-                0x00001258                DmaTxCh_SetSourceAddress
+                0x0000125c       0x1c ./Generated_Code/DmaTxCh.o
+                0x0000125c                DmaTxCh_SetSourceAddress
  .text.DmaTxCh_SetDestinationAddress
-                0x00001274       0x1c ./Generated_Code/DmaTxCh.o
-                0x00001274                DmaTxCh_SetDestinationAddress
+                0x00001278       0x1c ./Generated_Code/DmaTxCh.o
+                0x00001278                DmaTxCh_SetDestinationAddress
  .text.DmaTxCh_SetTransactionCount
-                0x00001290       0x1c ./Generated_Code/DmaTxCh.o
-                0x00001290                DmaTxCh_SetTransactionCount
+                0x00001294       0x1c ./Generated_Code/DmaTxCh.o
+                0x00001294                DmaTxCh_SetTransactionCount
  .text.DmaTxCh_SetRequestCount
-                0x000012ac       0x1c ./Generated_Code/DmaTxCh.o
-                0x000012ac                DmaTxCh_SetRequestCount
+                0x000012b0       0x1c ./Generated_Code/DmaTxCh.o
+                0x000012b0                DmaTxCh_SetRequestCount
  .text.PE_FillMemory
-                0x000012c8       0x24 ./Generated_Code/PE_LDD.o
-                0x000012c8                PE_FillMemory
+                0x000012cc       0x24 ./Generated_Code/PE_LDD.o
+                0x000012cc                PE_FillMemory
  .text.SpiBus2_Init
-                0x000012ec      0x10c ./Generated_Code/SpiBus2.o
-                0x000012ec                SpiBus2_Init
+                0x000012f0      0x10c ./Generated_Code/SpiBus2.o
+                0x000012f0                SpiBus2_Init
  *(.rodata)
  *(.rodata*)
  .rodata.DMA1_DevConst
-                0x000013f8       0x38 ./Generated_Code/DMA1.o
-                0x000013f8                DMA1_DevConst
+                0x000013fc       0x38 ./Generated_Code/DMA1.o
+                0x000013fc                DMA1_DevConst
  .rodata.DmaRxCh_ChInit
-                0x00001430       0x34 ./Generated_Code/DmaRxCh.o
-                0x00001430                DmaRxCh_ChInit
+                0x00001434       0x34 ./Generated_Code/DmaRxCh.o
+                0x00001434                DmaRxCh_ChInit
  .rodata.DmaTxCh_ChInit
-                0x00001464       0x34 ./Generated_Code/DmaTxCh.o
-                0x00001464                DmaTxCh_ChInit
+                0x00001468       0x34 ./Generated_Code/DmaTxCh.o
+                0x00001468                DmaTxCh_ChInit
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x00001498        0x0 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtbegin.o
+ .eh_frame      0x0000149c        0x0 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtbegin.o
  *(.init)
- .init          0x00001498        0x4 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crti.o
-                0x00001498                _init
- .init          0x0000149c        0x8 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtn.o
+ .init          0x0000149c        0x4 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crti.o
+                0x0000149c                _init
+ .init          0x000014a0        0x8 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtn.o
  *(.fini)
- .fini          0x000014a4        0x4 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crti.o
-                0x000014a4                _fini
- .fini          0x000014a8        0x8 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtn.o
-                0x000014b0                . = ALIGN (0x4)
-                0x000014b0                _etext = .
+ .fini          0x000014a8        0x4 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crti.o
+                0x000014a8                _fini
+ .fini          0x000014ac        0x8 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtn.o
+                0x000014b4                . = ALIGN (0x4)
+                0x000014b4                _etext = .
 
-.vfp11_veneer   0x000014b0        0x0
+.vfp11_veneer   0x000014b4        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x000014b0        0x0
+.v4_bx          0x000014b4        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x000014b0        0x0
+.iplt           0x000014b4        0x0
  .iplt          0x00000000        0x0 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtbegin.o
 
-.rel.dyn        0x000014b0        0x0
+.rel.dyn        0x000014b4        0x0
  .rel.iplt      0x00000000        0x0 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x000014b0        0x0
-                0x000014b0                __exidx_start = .
+.ARM            0x000014b4        0x0
+                0x000014b4                __exidx_start = .
  *(.ARM.exidx*)
-                0x000014b0                __exidx_end = .
+                0x000014b4                __exidx_end = .
 
-.ctors          0x000014b0        0x0
-                0x000014b0                __CTOR_LIST__ = .
+.ctors          0x000014b4        0x0
+                0x000014b4                __CTOR_LIST__ = .
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *(.ctors)
-                0x000014b0                __CTOR_END__ = .
+                0x000014b4                __CTOR_END__ = .
 
-.dtors          0x000014b0        0x0
-                0x000014b0                __DTOR_LIST__ = .
+.dtors          0x000014b4        0x0
+                0x000014b4                __DTOR_LIST__ = .
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *(.dtors)
-                0x000014b0                __DTOR_END__ = .
+                0x000014b4                __DTOR_END__ = .
 
-.preinit_array  0x000014b0        0x0
-                0x000014b0                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x000014b4        0x0
+                0x000014b4                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x000014b0                PROVIDE (__preinit_array_end, .)
+                0x000014b4                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x000014b0        0x4
-                0x000014b0                PROVIDE (__init_array_start, .)
+.init_array     0x000014b4        0x4
+                0x000014b4                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array*)
- .init_array    0x000014b0        0x4 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtbegin.o
-                0x000014b4                PROVIDE (__init_array_end, .)
+ .init_array    0x000014b4        0x4 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtbegin.o
+                0x000014b8                PROVIDE (__init_array_end, .)
 
-.fini_array     0x000014b4        0x4
-                0x000014b4                PROVIDE (__fini_array_start, .)
+.fini_array     0x000014b8        0x4
+                0x000014b8                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x000014b4        0x4 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtbegin.o
-                0x000014b8                PROVIDE (__fini_array_end, .)
-                0x000014b8                ___ROM_AT = .
+ .fini_array    0x000014b8        0x4 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtbegin.o
+                0x000014bc                PROVIDE (__fini_array_end, .)
+                0x000014bc                ___ROM_AT = .
 
-.data           0x1fff0000        0x0 load address 0x000014b8
+.data           0x1fff0000        0x0 load address 0x000014bc
                 0x1fff0000                . = ALIGN (0x4)
                 0x1fff0000                _sdata = .
  *(.data)
@@ -800,7 +800,7 @@ LOAD c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-
                 0x1fff0000                . = ALIGN (0x4)
                 0x1fff0000                _edata = .
                 0x00000000                ___data_size = (_edata - _sdata)
-                0x000014b8                ___m_data_20000000_ROMStart = (___ROM_AT + SIZEOF (.data))
+                0x000014bc                ___m_data_20000000_ROMStart = (___ROM_AT + SIZEOF (.data))
 
 .jcr            0x1fff0000        0x0
  .jcr           0x1fff0000        0x0 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtbegin.o
@@ -809,7 +809,7 @@ LOAD c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-
  .igot.plt      0x00000000        0x0 c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/crtbegin.o
 
 .m_data_20000000
-                0x20000000        0x0 load address 0x000014b8
+                0x20000000        0x0 load address 0x000014bc
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                ___m_data_20000000_RAMStart = .
  *(.m_data_20000000)
@@ -847,14 +847,14 @@ LOAD c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-
                 0x1fff06a8                . = ALIGN (0x4)
                 0x1fff06a8                __END_BSS = .
                 0x1fff06a8                PROVIDE (__bss_end__, __END_BSS)
-                0x000014b8                _romp_at = ((___ROM_AT + SIZEOF (.data)) + SIZEOF (.m_data_20000000))
+                0x000014bc                _romp_at = ((___ROM_AT + SIZEOF (.data)) + SIZEOF (.m_data_20000000))
 
-.romp           0x1fff06a8       0x24 load address 0x000014b8
-                0x000014b8                __S_romp = _romp_at
-                0x1fff06a8        0x4 LONG 0x14b8 ___ROM_AT
+.romp           0x1fff06a8       0x24 load address 0x000014bc
+                0x000014bc                __S_romp = _romp_at
+                0x1fff06a8        0x4 LONG 0x14bc ___ROM_AT
                 0x1fff06ac        0x4 LONG 0x1fff0000 _sdata
                 0x1fff06b0        0x4 LONG 0x0 ___data_size
-                0x1fff06b4        0x4 LONG 0x14b8 ___m_data_20000000_ROMStart
+                0x1fff06b4        0x4 LONG 0x14bc ___m_data_20000000_ROMStart
                 0x1fff06b8        0x4 LONG 0x20000000 ___m_data_20000000_RAMStart
                 0x1fff06bc        0x4 LONG 0x0 ___m_data_20000000_ROMSize
                 0x1fff06c0        0x4 LONG 0x0
@@ -862,7 +862,7 @@ LOAD c:/freescale/kds_3.0.0/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-
                 0x1fff06c8        0x4 LONG 0x0
 
 ._user_heap_stack
-                0x1fff06cc      0x400 load address 0x000014dc
+                0x1fff06cc      0x400 load address 0x000014e0
                 0x1fff06cc                . = ALIGN (0x4)
                 0x1fff06cc                PROVIDE (end, .)
                 0x1fff06cc                PROVIDE (_end, .)
