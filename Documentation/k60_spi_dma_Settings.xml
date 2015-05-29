@@ -325,93 +325,117 @@ PE_DEBUGHALT();
       <EmptySection_DummyValue />
     </Events>
   </Bean>
-  <Bean name="DMA1" type="DMAController">
+  <Bean name="SpiBus2" type="SPIMaster_LDD">
     <Enabled v="Y" />
     <Properties>
-      <Component_name v="DMA1" />
-      <Device v="DMA" />
+      <Component_name v="SpiBus2" />
+      <Device v="SPI2" />
+      <boolgroup name="Interrupt service/event" v="Disabled" />
       <group name="Settings">
-        <Minor_loop_mapping v="Disabled" />
-        <Continuous_mode v="Disabled" />
-        <Halt_on_error v="Disabled" />
-        <Debug v="Disabled" />
+        <boolgroup name="Input pin" v="Enabled">
+          <Pin v="PTB23/SPI2_SIN/SPI0_PCS5/FB_AD28" />
+        </boolgroup>
+        <boolgroup name="Output pin" v="Enabled">
+          <Pin v="PTB22/SPI2_SOUT/FB_AD29/CMP2_OUT" />
+        </boolgroup>
+        <group name="Clock pin">
+          <Pin v="PTB21/SPI2_SCK/FB_AD30/CMP1_OUT" />
+        </group>
+        <list name="Chip select list" v="1">
+          <group name="Chip select 0">
+            <Pin v="PTB20/SPI2_PCS0/FB_AD31/CMP0_OUT" />
+            <Active_level v="Low" />
+          </group>
+        </list>
+        <boolgroup name="CS external demultiplexer" v="Disabled" />
+        <list name="Attribute set list" v="1">
+          <group name="Attribute set 0">
+            <Width v="8 bits" />
+            <MSB_first v="yes" />
+            <Clock_polarity v="High" />
+            <Clock_phase v="Capture on leading edge" />
+            <Parity v="None" />
+            <Chip_select_toggling v="no" />
+            <Clock_rate_index v="0" />
+            <Delay_after_transfer_index v="0" />
+            <CS_to_CLK_delay_index v="0" />
+            <CLK_to_CS_delay_index v="0" />
+          </group>
+        </list>
+        <Clock_rate v="0.095367 &amp;#181;s" />
+        <Delay_after_transfer v="2.2 &amp;#181;s" />
+        <CS_to_CLK_delay v="2.0 &amp;#181;s" />
+        <CLK_to_CS_delay v="2.0 &amp;#181;s" />
+        <HW_input_buffer_size v="1" />
+        <HW_input_watermark v="1" />
+        <HW_output_buffer_size v="1" />
+        <HW_output_watermark v="1" />
       </group>
-      <enumgroup name="Channel arbitration type" v="Fixed">
-        <Autoset_channel_priority v="" />
-      </enumgroup>
-      <list name="Statically allocated channels" v="2">
-        <group name="Channel settings">
-          <Channel v="DMA_Channel0" />
-          <Allocate_channel v="no" />
-          <Channel_shared v="no" />
-          <Used_by_component_s_ v="DMACH1" />
-          <enumgroup name="Arbitration type" v="Fixed">
-            <Priority v="0" />
-            <Can_be_preempted v="no" />
-            <Can_preempt v="no" />
-          </enumgroup>
-          <boolgroup name="Interrupt service" v="Enabled">
-            <group name="Transfer complete interrupt">
-              <Interrupt_vector v="INT_DMA0" />
-              <Interrupt_priority v="8" />
-            </group>
-            <group name="Error interrupt">
-              <Interrupt_vector v="INT_DMA_Error" />
-              <Interrupt_priority v="medium priority" />
-            </group>
-          </boolgroup>
+      <group name="Initialization">
+        <Initial_chip_select v="0" />
+        <Initial_attribute_set v="0" />
+        <Enabled_in_init__code v="yes" />
+        <group name="Event mask">
+          <OnBlockSent v="Enabled" />
+          <OnBlockReceived v="Enabled" />
+          <OnError v="Disabled" />
         </group>
-        <group name="Channel settings">
-          <Channel v="DMA_Channel1" />
-          <Allocate_channel v="no" />
-          <Channel_shared v="no" />
-          <Used_by_component_s_ v="DMACH2" />
-          <enumgroup name="Arbitration type" v="Fixed">
-            <Priority v="1" />
-            <Can_be_preempted v="no" />
-            <Can_preempt v="no" />
-          </enumgroup>
-          <boolgroup name="Interrupt service" v="Enabled">
-            <group name="Transfer complete interrupt">
-              <Interrupt_vector v="INT_DMA1" />
-              <Interrupt_priority v="8" />
-            </group>
-            <group name="Error interrupt">
-              <Interrupt_vector v="INT_DMA_Error" />
-              <Interrupt_priority v="medium priority" />
-            </group>
-          </boolgroup>
-        </group>
-      </list>
-      <list name="Dynamically allocatable channels" v="0">
-        <EmptySection_DummyValue />
-      </list>
+      </group>
     </Properties>
     <Methods>
-      <EmptySection_DummyValue />
+      <Init v="generate code" />
+      <Deinit v="generate code" />
+      <Enable v="generate code" />
+      <Disable v="generate code" />
+      <SetEventMask v="don&amp;apos;t generate code" />
+      <GetEventMask v="don&amp;apos;t generate code" />
+      <SendBlock v="generate code" />
+      <ReceiveBlock v="generate code" />
+      <GetSentDataNum v="don&amp;apos;t generate code" />
+      <GetReceivedDataNum v="don&amp;apos;t generate code" />
+      <GetBlockSentStatus v="don&amp;apos;t generate code" />
+      <GetBlockReceivedStatus v="don&amp;apos;t generate code" />
+      <CancelBlockTransmission v="don&amp;apos;t generate code" />
+      <CancelBlockReception v="don&amp;apos;t generate code" />
+      <GetError v="don&amp;apos;t generate code" />
+      <SelectConfiguration v="don&amp;apos;t generate code" />
+      <Main v="generate code" />
+      <ForceReceiver v="don&amp;apos;t generate code" />
+      <GetStats v="don&amp;apos;t generate code" />
+      <ClearStats v="don&amp;apos;t generate code" />
+      <SetOperationMode v="don&amp;apos;t generate code" />
+      <GetDriverState v="don&amp;apos;t generate code" />
+      <ConnectPin v="don&amp;apos;t generate code" />
     </Methods>
     <Events>
-      <EmptySection_DummyValue />
+      <Event_module_name v="Events" />
+      <event name="OnBlockSent" v="generate code">
+        <Event_procedure_name v="SpiBus2_OnBlockSent" />
+      </event>
+      <event name="OnBlockReceived" v="generate code">
+        <Event_procedure_name v="SpiBus2_OnBlockReceived" />
+      </event>
+      <event name="OnError" v="don&amp;apos;t generate code" />
     </Events>
   </Bean>
-  <Bean name="DMACH1" type="DMAChannel_LDD">
+  <Bean name="DmaTxCh" type="DMAChannel_LDD">
     <Enabled v="Y" />
     <Properties>
-      <Component_name v="DMACH1" />
+      <Component_name v="DmaTxCh" />
       <boolgroup name="Hardware request" v="Enabled">
         <Request_source v="SPI2_Transmit_DMA_Request" />
         <boolgroup name="Request periodic trigger" v="Disabled" />
       </boolgroup>
       <enumgroup name="Channel select" v="Fixed">
         <DMA_controller_device v="DMA1" />
-        <Channel v="DMA_Channel0" />
+        <Channel v="DMA_Channel1" />
         <Allocate_channel v="yes" />
         <enumgroup name="Arbitration type" v="Fixed">
-          <Priority v="0" />
+          <Priority v="3" />
         </enumgroup>
         <boolgroup name="Interrupt service" v="Enabled">
           <group name="Transfer complete interrupt">
-            <Interrupt_vector v="INT_DMA0" />
+            <Interrupt_vector v="INT_DMA1" />
             <Interrupt_priority v="8" />
           </group>
           <group name="Error interrupt">
@@ -472,7 +496,7 @@ PE_DEBUGHALT();
       <StartTransfer v="generate code" />
       <CancelTransfer v="don&amp;apos;t generate code" />
       <GetTransferState v="don&amp;apos;t generate code" />
-      <GetTransferCompleteStatus v="generate code" />
+      <GetTransferCompleteStatus v="don&amp;apos;t generate code" />
       <GetError v="generate code" />
       <GetTransferredDataSize v="don&amp;apos;t generate code" />
       <SetSourceAddress v="generate code" />
@@ -488,31 +512,31 @@ PE_DEBUGHALT();
     <Events>
       <Event_module_name v="Events" />
       <event name="OnComplete" v="generate code">
-        <Event_procedure_name v="DMACH1_OnComplete" />
+        <Event_procedure_name v="DmaTxCh_OnComplete" />
       </event>
       <event name="OnError" v="generate code">
-        <Event_procedure_name v="DMACH1_OnError" />
+        <Event_procedure_name v="DmaTxCh_OnError" />
       </event>
     </Events>
   </Bean>
-  <Bean name="DMACH2" type="DMAChannel_LDD">
+  <Bean name="DmaRxCh" type="DMAChannel_LDD">
     <Enabled v="Y" />
     <Properties>
-      <Component_name v="DMACH2" />
+      <Component_name v="DmaRxCh" />
       <boolgroup name="Hardware request" v="Enabled">
         <Request_source v="SPI2_Receive_DMA_Request" />
         <boolgroup name="Request periodic trigger" v="Disabled" />
       </boolgroup>
       <enumgroup name="Channel select" v="Fixed">
         <DMA_controller_device v="DMA1" />
-        <Channel v="DMA_Channel1" />
+        <Channel v="DMA_Channel2" />
         <Allocate_channel v="yes" />
         <enumgroup name="Arbitration type" v="Fixed">
-          <Priority v="1" />
+          <Priority v="4" />
         </enumgroup>
         <boolgroup name="Interrupt service" v="Enabled">
           <group name="Transfer complete interrupt">
-            <Interrupt_vector v="INT_DMA1" />
+            <Interrupt_vector v="INT_DMA2" />
             <Interrupt_priority v="8" />
           </group>
           <group name="Error interrupt">
@@ -573,7 +597,7 @@ PE_DEBUGHALT();
       <StartTransfer v="generate code" />
       <CancelTransfer v="don&amp;apos;t generate code" />
       <GetTransferState v="don&amp;apos;t generate code" />
-      <GetTransferCompleteStatus v="generate code" />
+      <GetTransferCompleteStatus v="don&amp;apos;t generate code" />
       <GetError v="generate code" />
       <GetTransferredDataSize v="don&amp;apos;t generate code" />
       <SetSourceAddress v="generate code" />
@@ -589,113 +613,77 @@ PE_DEBUGHALT();
     <Events>
       <Event_module_name v="Events" />
       <event name="OnComplete" v="generate code">
-        <Event_procedure_name v="DMACH2_OnComplete" />
+        <Event_procedure_name v="DmaRxCh_OnComplete" />
       </event>
       <event name="OnError" v="generate code">
-        <Event_procedure_name v="DMACH2_OnError" />
+        <Event_procedure_name v="DmaRxCh_OnError" />
       </event>
     </Events>
   </Bean>
-  <Bean name="SPI2" type="Init_SPI">
+  <Bean name="DMA1" type="DMAController">
     <Enabled v="Y" />
     <Properties>
-      <Component_name v="SPI2" />
-      <Device v="SPI2" />
+      <Component_name v="DMA1" />
+      <Device v="DMA" />
       <group name="Settings">
-        <Clock_gate v="Enabled" />
-        <enumgroup name="Configuration 0" v="Master">
-          <group name="Clock setting">
-            <Baud_rate_prescaler v="divide by 2" />
-            <Double_baud_rate v="Enabled" />
-            <Baud_rate_scaler v="divide by 2" />
-            <DSPI_frequency v="10.486 MHz" />
-            <PCS_to_SCK_delay_prescaler v="divide by 1" />
-            <PCS_to_SCK_delay_scaler v="divide by 2" />
-            <PCS_to_SCK_delay v="0.095 us" />
-            <After_SCK_delay_prescaler v="divide by 3" />
-            <After_SCK_delay_scaler v="divide by 16" />
-            <After_SCK_delay v="2.289 us" />
-            <Delay_after_transfer_prescaler v="divide by 3" />
-            <Delay_after_transfer_scaler v="divide by 16" />
-            <Delay_after_transfer v="2.289 us" />
-          </group>
-          <Transfer_size v="8" />
-          <Clock_polarity v="High" />
-          <Clock_phase v="Capture on leading edge" />
-          <LSB_first v="Disabled" />
-        </enumgroup>
-        <enumgroup name="Configuration 1" v="Master">
-          <group name="Clock setting">
-            <Baud_rate_prescaler v="divide by 2" />
-            <Double_baud_rate v="Disabled" />
-            <Baud_rate_scaler v="divide by 2" />
-            <DSPI_frequency v="5.243 MHz" />
-            <PCS_to_SCK_delay_prescaler v="divide by 1" />
-            <PCS_to_SCK_delay_scaler v="divide by 2" />
-            <PCS_to_SCK_delay v="0.095 us" />
-            <After_SCK_delay_prescaler v="divide by 1" />
-            <After_SCK_delay_scaler v="divide by 2" />
-            <After_SCK_delay v="0.095 us" />
-            <Delay_after_transfer_prescaler v="divide by 1" />
-            <Delay_after_transfer_scaler v="divide by 2" />
-            <Delay_after_transfer v="0.095 us" />
-          </group>
-          <Transfer_size v="16" />
-          <Clock_polarity v="Low" />
-          <Clock_phase v="Capture on leading edge" />
-          <LSB_first v="Disabled" />
-        </enumgroup>
-        <Master_mode v="Enabled" />
-        <Continuous_SCK v="Disabled" />
-        <Freeze v="Do not halt transfers" />
-        <Doze v="Disabled" />
-        <Modified_timing_format v="Disabled" />
-        <Peripheral_chip_select_strobe v="Disabled" />
-        <Rx_FIFO_overflow_overwrite v="Disabled" />
-        <PCS0_inactive_level v="High" />
-        <PCS1_inactive_level v="High" />
-        <TxFIFO v="Enabled" />
-        <RxFIFO v="Enabled" />
-        <Sample_point v="1 system clock" />
+        <Minor_loop_mapping v="Disabled" />
+        <Continuous_mode v="Disabled" />
+        <Halt_on_error v="Disabled" />
+        <Debug v="Disabled" />
       </group>
-      <group name="Pins">
-        <boolgroup name="Data input pin" v="Enabled">
-          <Pin v="PTB23/SPI2_SIN/SPI0_PCS5/FB_AD28" />
-        </boolgroup>
-        <boolgroup name="Data output pin" v="Enabled">
-          <Pin v="PTB22/SPI2_SOUT/FB_AD29/CMP2_OUT" />
-        </boolgroup>
-        <boolgroup name="Clock output pin" v="Enabled">
-          <Pin v="PTB21/SPI2_SCK/FB_AD30/CMP1_OUT" />
-        </boolgroup>
-        <boolgroup name="Peripheral select 0 pin" v="Enabled">
-          <Pin v="PTB20/SPI2_PCS0/FB_AD31/CMP0_OUT" />
-        </boolgroup>
-        <boolgroup name="Peripheral select 1 pin" v="Disabled" />
-      </group>
-      <group name="Interrupts/DMA">
-        <Interrupt v="INT_SPI2" />
-        <Interrupt_request v="Disabled" />
-        <Interrupt_priority v="3" />
-        <ISR_Name v="" />
-        <DSPI_finished_interrupt v="Disabled" />
-        <Transmission_complete_interrupt v="Disabled" />
-        <Tx_FIFO_fill_request v="Enabled" />
-        <Tx_FIFO_fill_request_type v="DMA" />
-        <Tx_FIFO_underflow_interrupt v="Disabled" />
-        <Rx_FIFO_drain_request v="Enabled" />
-        <Rx_FIFO_drain_request_type v="DMA" />
-        <Rx_FIFO_overflow_interrupt v="Disabled" />
-      </group>
-      <group name="Initialization">
-        <Transfer_counter v="0" />
-        <Module_disable v="no" />
-        <Halt v="no" />
-        <Call_Init_method v="yes" />
-      </group>
+      <enumgroup name="Channel arbitration type" v="Fixed">
+        <Autoset_channel_priority v="" />
+      </enumgroup>
+      <list name="Statically allocated channels" v="2">
+        <group name="Channel settings">
+          <Channel v="DMA_Channel1" />
+          <Allocate_channel v="no" />
+          <Channel_shared v="no" />
+          <Used_by_component_s_ v="DmaTxCh" />
+          <enumgroup name="Arbitration type" v="Fixed">
+            <Priority v="3" />
+            <Can_be_preempted v="no" />
+            <Can_preempt v="no" />
+          </enumgroup>
+          <boolgroup name="Interrupt service" v="Enabled">
+            <group name="Transfer complete interrupt">
+              <Interrupt_vector v="INT_DMA1" />
+              <Interrupt_priority v="8" />
+            </group>
+            <group name="Error interrupt">
+              <Interrupt_vector v="INT_DMA_Error" />
+              <Interrupt_priority v="medium priority" />
+            </group>
+          </boolgroup>
+        </group>
+        <group name="Channel settings">
+          <Channel v="DMA_Channel2" />
+          <Allocate_channel v="no" />
+          <Channel_shared v="no" />
+          <Used_by_component_s_ v="DmaRxCh" />
+          <enumgroup name="Arbitration type" v="Fixed">
+            <Priority v="4" />
+            <Can_be_preempted v="no" />
+            <Can_preempt v="no" />
+          </enumgroup>
+          <boolgroup name="Interrupt service" v="Enabled">
+            <group name="Transfer complete interrupt">
+              <Interrupt_vector v="INT_DMA2" />
+              <Interrupt_priority v="8" />
+            </group>
+            <group name="Error interrupt">
+              <Interrupt_vector v="INT_DMA_Error" />
+              <Interrupt_priority v="medium priority" />
+            </group>
+          </boolgroup>
+        </group>
+      </list>
+      <list name="Dynamically allocatable channels" v="0">
+        <EmptySection_DummyValue />
+      </list>
     </Properties>
     <Methods>
-      <Init v="generate code" />
+      <EmptySection_DummyValue />
     </Methods>
     <Events>
       <EmptySection_DummyValue />

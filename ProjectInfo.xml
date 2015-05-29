@@ -52,11 +52,11 @@
     <GeneratedCs>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\Cpu.c</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\DMA1.c</PathName>
-      <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\DMACH1.c</PathName>
-      <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\DMACH2.c</PathName>
+      <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\DmaRxCh.c</PathName>
+      <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\DmaTxCh.c</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\PE_LDD.c</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\SPI1.c</PathName>
-      <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\SPI2.c</PathName>
+      <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\SpiBus2.c</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\Vectors.c</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Project_Settings\Startup_Code\startup.c</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Sources\Events.c</PathName>
@@ -65,15 +65,15 @@
     <GeneratedHs>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\Cpu.h</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\DMA1.h</PathName>
-      <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\DMACH1.h</PathName>
-      <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\DMACH2.h</PathName>
+      <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\DmaRxCh.h</PathName>
+      <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\DmaTxCh.h</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\IO_Map.h</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\PE_Const.h</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\PE_Error.h</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\PE_LDD.h</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\PE_Types.h</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\SPI1.h</PathName>
-      <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\SPI2.h</PathName>
+      <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Generated_Code\SpiBus2.h</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Sources\Events.h</PathName>
       <PathName>C:\Users\sanani\Documents\GitHub\k60_spi_dma_2\Sources\ads130e08.h</PathName>
       <PathName>C:\Freescale\KDS_3.0.0\eclipse\ProcessorExpert\lib\Kinetis\iofiles\MK60D10.h</PathName>

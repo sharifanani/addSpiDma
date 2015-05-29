@@ -7,7 +7,7 @@
 **     Version     : Component 01.039, Driver 01.02, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-27, 12:45, # CodeGen: 57
+**     Date/Time   : 2015-05-29, 12:07, # CodeGen: 70
 **     Abstract    :
 **          This embedded component implements initialization
 **          and runtime handling of an on-chip DMA controller.
@@ -29,30 +29,13 @@
 **          Channel arbitration type                       : Fixed
 **            Autoset channel priority                     : 
 **          Statically allocated channels                  : 2
-**            Channel settings                             : Chan: 0
-**              Channel                                    : DMA_Channel0
-**              Allocate channel                           : no
-**              Channel shared                             : no
-**              Used by component(s)                       : DMACH1
-**              Arbitration type                           : Fixed
-**                Priority                                 : 0
-**                Can be preempted                         : no
-**                Can preempt                              : no
-**              Interrupt service                          : Enabled
-**                Transfer complete interrupt              : 
-**                  Interrupt vector                       : INT_DMA0
-**                  Interrupt priority                     : 8
-**                Error interrupt                          : 
-**                  Interrupt vector                       : INT_DMA_Error
-**                  Interrupt priority                     : medium priority
-**              Component name0                            : DMACH1
 **            Channel settings                             : Chan: 1
 **              Channel                                    : DMA_Channel1
 **              Allocate channel                           : no
 **              Channel shared                             : no
-**              Used by component(s)                       : DMACH2
+**              Used by component(s)                       : DmaTxCh
 **              Arbitration type                           : Fixed
-**                Priority                                 : 1
+**                Priority                                 : 3
 **                Can be preempted                         : no
 **                Can preempt                              : no
 **              Interrupt service                          : Enabled
@@ -62,22 +45,38 @@
 **                Error interrupt                          : 
 **                  Interrupt vector                       : INT_DMA_Error
 **                  Interrupt priority                     : medium priority
-**              Component name0                            : DMACH2
+**              Component name0                            : DmaTxCh
+**            Channel settings                             : Chan: 2
+**              Channel                                    : DMA_Channel2
+**              Allocate channel                           : no
+**              Channel shared                             : no
+**              Used by component(s)                       : DmaRxCh
+**              Arbitration type                           : Fixed
+**                Priority                                 : 4
+**                Can be preempted                         : no
+**                Can preempt                              : no
+**              Interrupt service                          : Enabled
+**                Transfer complete interrupt              : 
+**                  Interrupt vector                       : INT_DMA2
+**                  Interrupt priority                     : 8
+**                Error interrupt                          : 
+**                  Interrupt vector                       : INT_DMA_Error
+**                  Interrupt priority                     : medium priority
+**              Component name0                            : DmaRxCh
 **          Dynamically allocatable channels               : 0
 **     Contents    :
-**         Init                      - LDD_TDeviceData* DMA1_Init(void);
-**         InitChannel               - LDD_TDeviceData* DMA1_InitChannel(LDD_TDeviceData *DeviceDataPtr,...
-**         Enable                    - LDD_TError DMA1_Enable(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         Disable                   - LDD_TError DMA1_Disable(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         EnableRequest             - LDD_TError DMA1_EnableRequest(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         DisableRequest            - LDD_TError DMA1_DisableRequest(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         StartTransfer             - LDD_TError DMA1_StartTransfer(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         GetTransferCompleteStatus - bool DMA1_GetTransferCompleteStatus(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         GetError                  - LDD_DMA_TErrorFlags DMA1_GetError(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         SetSourceAddress          - LDD_TError DMA1_SetSourceAddress(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
-**         SetDestinationAddress     - LDD_TError DMA1_SetDestinationAddress(DMA1_TChanDeviceData...
-**         SetTransactionCount       - LDD_TError DMA1_SetTransactionCount(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
-**         SetRequestCount           - LDD_TError DMA1_SetRequestCount(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
+**         Init                  - LDD_TDeviceData* DMA1_Init(void);
+**         InitChannel           - LDD_TDeviceData* DMA1_InitChannel(LDD_TDeviceData *DeviceDataPtr,...
+**         Enable                - LDD_TError DMA1_Enable(DMA1_TChanDeviceData *ChanDeviceDataPtr);
+**         Disable               - LDD_TError DMA1_Disable(DMA1_TChanDeviceData *ChanDeviceDataPtr);
+**         EnableRequest         - LDD_TError DMA1_EnableRequest(DMA1_TChanDeviceData *ChanDeviceDataPtr);
+**         DisableRequest        - LDD_TError DMA1_DisableRequest(DMA1_TChanDeviceData *ChanDeviceDataPtr);
+**         StartTransfer         - LDD_TError DMA1_StartTransfer(DMA1_TChanDeviceData *ChanDeviceDataPtr);
+**         GetError              - LDD_DMA_TErrorFlags DMA1_GetError(DMA1_TChanDeviceData *ChanDeviceDataPtr);
+**         SetSourceAddress      - LDD_TError DMA1_SetSourceAddress(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
+**         SetDestinationAddress - LDD_TError DMA1_SetDestinationAddress(DMA1_TChanDeviceData...
+**         SetTransactionCount   - LDD_TError DMA1_SetTransactionCount(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
+**         SetRequestCount       - LDD_TError DMA1_SetRequestCount(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -147,7 +146,6 @@
 #define DMA1_EnableRequest_METHOD_ENABLED /*!< EnableRequest method of the component DMA1 is enabled (generated) */
 #define DMA1_DisableRequest_METHOD_ENABLED /*!< DisableRequest method of the component DMA1 is enabled (generated) */
 #define DMA1_StartTransfer_METHOD_ENABLED /*!< StartTransfer method of the component DMA1 is enabled (generated) */
-#define DMA1_GetTransferCompleteStatus_METHOD_ENABLED /*!< GetTransferCompleteStatus method of the component DMA1 is enabled (generated) */
 #define DMA1_GetError_METHOD_ENABLED   /*!< GetError method of the component DMA1 is enabled (generated) */
 #define DMA1_SetSourceAddress_METHOD_ENABLED /*!< SetSourceAddress method of the component DMA1 is enabled (generated) */
 #define DMA1_SetDestinationAddress_METHOD_ENABLED /*!< SetDestinationAddress method of the component DMA1 is enabled (generated) */
@@ -347,34 +345,6 @@ LDD_TError DMA1_StartTransfer(DMA1_TChanDeviceData *ChanDeviceDataPtr);
 
 /*
 ** ===================================================================
-**     Method      :  DMA1_GetTransferCompleteStatus (component DMAController)
-*/
-/*!
-**     @brief
-**         This method returns value of "Transfer done" flag and clears
-**         this flag if it was set. It is intended to be used in
-**         pooling mode to check transfer state. In this case the
-**         method returns value of real hw flag.
-**         It can also be used in interrupt mode. In interrupt mode the
-**         method doesn't return value of real hw flag but value of sw
-**         flag that is updated to the real value in the interrupt
-**         service routine (This method returns FALSE unless ISR is
-**         invoked).
-**     @param
-**         ChanDeviceDataPtr - DMA channel
-**                           data structure pointer returned by
-**                           [InitChannel()] method.
-**     @return
-**                         - Return values: 
-**                           - [true] - Last transfer is done. 
-**                           - [false] - Transfer is pending or last
-**                           call of this method has returned [true].
-*/
-/* ===================================================================*/
-bool DMA1_GetTransferCompleteStatus(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-
-/*
-** ===================================================================
 **     Method      :  DMA1_GetError (component DMAController)
 */
 /*!
@@ -497,7 +467,7 @@ LDD_TError DMA1_SetRequestCount(DMA1_TChanDeviceData *ChanDeviceDataPtr, LDD_DMA
 ** ===================================================================
 */
 /* {Default RTOS Adapter} ISR function prototype */
-PE_ISR(DMA1_INT_DMA0_TransferComplete_ISR);
+PE_ISR(DMA1_INT_DMA1_TransferComplete_ISR);
 /*
 ** ===================================================================
 **     Method      :  DMA1_TransferComplete_ISR (component DMAController)
@@ -508,7 +478,7 @@ PE_ISR(DMA1_INT_DMA0_TransferComplete_ISR);
 ** ===================================================================
 */
 /* {Default RTOS Adapter} ISR function prototype */
-PE_ISR(DMA1_INT_DMA1_TransferComplete_ISR);
+PE_ISR(DMA1_INT_DMA2_TransferComplete_ISR);
 /*
 ** ===================================================================
 **     Method      :  DMA1_TransferError_ISR (component DMAController)

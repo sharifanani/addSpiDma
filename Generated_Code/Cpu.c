@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : K60P144M100SF2V2RM Rev. 2, Jun 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-26, 16:04, # CodeGen: 50
+**     Date/Time   : 2015-05-29, 11:27, # CodeGen: 64
 **     Abstract    :
 **
 **     Settings    :
@@ -298,10 +298,10 @@
 
 /* {Default RTOS Adapter} No RTOS includes */
 #include "SPI1.h"
+#include "SpiBus2.h"
+#include "DmaTxCh.h"
+#include "DmaRxCh.h"
 #include "DMA1.h"
-#include "DMACH1.h"
-#include "DMACH2.h"
-#include "SPI2.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -518,8 +518,6 @@ void PE_low_level_init(void)
   /* Common initialization of the CPU registers */
   /* NVICIP27: PRI27=0x30 */
   NVICIP27 = NVIC_IP_PRI27(0x30);
-  /* NVICIP28: PRI28=0x30 */
-  NVICIP28 = NVIC_IP_PRI28(0x30);
   /* NVICIP20: PRI20=0 */
   NVICIP20 = NVIC_IP_PRI20(0x00);
   /* PORTE_PCR3: ISF=0,MUX=2 */
@@ -550,44 +548,12 @@ void PE_low_level_init(void)
                )) | (uint32_t)(
                 PORT_PCR_MUX(0x02)
                ));
-  /* PORTB_PCR23: ISF=0,MUX=2 */
-  PORTB_PCR23 = (uint32_t)((PORTB_PCR23 & (uint32_t)~(uint32_t)(
-                 PORT_PCR_ISF_MASK |
-                 PORT_PCR_MUX(0x05)
-                )) | (uint32_t)(
-                 PORT_PCR_MUX(0x02)
-                ));
-  /* PORTB_PCR22: ISF=0,MUX=2 */
-  PORTB_PCR22 = (uint32_t)((PORTB_PCR22 & (uint32_t)~(uint32_t)(
-                 PORT_PCR_ISF_MASK |
-                 PORT_PCR_MUX(0x05)
-                )) | (uint32_t)(
-                 PORT_PCR_MUX(0x02)
-                ));
-  /* PORTB_PCR21: ISF=0,MUX=2 */
-  PORTB_PCR21 = (uint32_t)((PORTB_PCR21 & (uint32_t)~(uint32_t)(
-                 PORT_PCR_ISF_MASK |
-                 PORT_PCR_MUX(0x05)
-                )) | (uint32_t)(
-                 PORT_PCR_MUX(0x02)
-                ));
-  /* PORTB_PCR20: ISF=0,MUX=2 */
-  PORTB_PCR20 = (uint32_t)((PORTB_PCR20 & (uint32_t)~(uint32_t)(
-                 PORT_PCR_ISF_MASK |
-                 PORT_PCR_MUX(0x05)
-                )) | (uint32_t)(
-                 PORT_PCR_MUX(0x02)
-                ));
   /* ### Init_SPI "SPI1" init code ... */
   /* ### Call "SPI1_Init();" init method in a user code, i.e. in the main code */
 
   /* ### Note:   To enable automatic calling of the "SPI1" init code here,
                  the 'Call Init method' property must be set to 'yes'.
    */
-
-
-  /* ### Init_SPI "SPI2" init code ... */
-  SPI2_Init();
 
 
   /* Enable interrupts of the given priority level */

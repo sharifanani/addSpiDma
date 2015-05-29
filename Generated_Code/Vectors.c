@@ -6,7 +6,7 @@
 **     Version     : Component 01.000, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-26, 16:04, # CodeGen: 50
+**     Date/Time   : 2015-05-29, 12:07, # CodeGen: 70
 **     Abstract    :
 **
 **     Settings    :
@@ -56,10 +56,10 @@
 
   #include "Cpu.h"
   #include "SPI1.h"
+  #include "SpiBus2.h"
+  #include "DmaTxCh.h"
+  #include "DmaRxCh.h"
   #include "DMA1.h"
-  #include "DMACH1.h"
-  #include "DMACH2.h"
-  #include "SPI2.h"
   #include "Events.h"
 
 
@@ -95,9 +95,9 @@
     (tIsrFunc)&Cpu_Interrupt,          /* 0x0D  0x00000034   -   ivINT_Reserved13               unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x0E  0x00000038   -   ivINT_PendableSrvReq           unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x0F  0x0000003C   -   ivINT_SysTick                  unused by PE */
-    (tIsrFunc)&DMA1_INT_DMA0_TransferComplete_ISR, /* 0x10  0x00000040   8   ivINT_DMA0                     used by PE */
+    (tIsrFunc)&Cpu_Interrupt,          /* 0x10  0x00000040   -   ivINT_DMA0                     unused by PE */
     (tIsrFunc)&DMA1_INT_DMA1_TransferComplete_ISR, /* 0x11  0x00000044   8   ivINT_DMA1                     used by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x12  0x00000048   -   ivINT_DMA2                     unused by PE */
+    (tIsrFunc)&DMA1_INT_DMA2_TransferComplete_ISR, /* 0x12  0x00000048   8   ivINT_DMA2                     used by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x13  0x0000004C   -   ivINT_DMA3                     unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x14  0x00000050   -   ivINT_DMA4                     unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x15  0x00000054   -   ivINT_DMA5                     unused by PE */

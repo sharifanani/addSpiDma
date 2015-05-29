@@ -7,7 +7,7 @@
 **     Version     : Component 01.039, Driver 01.02, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-27, 12:45, # CodeGen: 57
+**     Date/Time   : 2015-05-29, 12:07, # CodeGen: 70
 **     Abstract    :
 **          This embedded component implements initialization
 **          and runtime handling of an on-chip DMA controller.
@@ -29,30 +29,13 @@
 **          Channel arbitration type                       : Fixed
 **            Autoset channel priority                     : 
 **          Statically allocated channels                  : 2
-**            Channel settings                             : Chan: 0
-**              Channel                                    : DMA_Channel0
-**              Allocate channel                           : no
-**              Channel shared                             : no
-**              Used by component(s)                       : DMACH1
-**              Arbitration type                           : Fixed
-**                Priority                                 : 0
-**                Can be preempted                         : no
-**                Can preempt                              : no
-**              Interrupt service                          : Enabled
-**                Transfer complete interrupt              : 
-**                  Interrupt vector                       : INT_DMA0
-**                  Interrupt priority                     : 8
-**                Error interrupt                          : 
-**                  Interrupt vector                       : INT_DMA_Error
-**                  Interrupt priority                     : medium priority
-**              Component name0                            : DMACH1
 **            Channel settings                             : Chan: 1
 **              Channel                                    : DMA_Channel1
 **              Allocate channel                           : no
 **              Channel shared                             : no
-**              Used by component(s)                       : DMACH2
+**              Used by component(s)                       : DmaTxCh
 **              Arbitration type                           : Fixed
-**                Priority                                 : 1
+**                Priority                                 : 3
 **                Can be preempted                         : no
 **                Can preempt                              : no
 **              Interrupt service                          : Enabled
@@ -62,22 +45,38 @@
 **                Error interrupt                          : 
 **                  Interrupt vector                       : INT_DMA_Error
 **                  Interrupt priority                     : medium priority
-**              Component name0                            : DMACH2
+**              Component name0                            : DmaTxCh
+**            Channel settings                             : Chan: 2
+**              Channel                                    : DMA_Channel2
+**              Allocate channel                           : no
+**              Channel shared                             : no
+**              Used by component(s)                       : DmaRxCh
+**              Arbitration type                           : Fixed
+**                Priority                                 : 4
+**                Can be preempted                         : no
+**                Can preempt                              : no
+**              Interrupt service                          : Enabled
+**                Transfer complete interrupt              : 
+**                  Interrupt vector                       : INT_DMA2
+**                  Interrupt priority                     : 8
+**                Error interrupt                          : 
+**                  Interrupt vector                       : INT_DMA_Error
+**                  Interrupt priority                     : medium priority
+**              Component name0                            : DmaRxCh
 **          Dynamically allocatable channels               : 0
 **     Contents    :
-**         Init                      - LDD_TDeviceData* DMA1_Init(void);
-**         InitChannel               - LDD_TDeviceData* DMA1_InitChannel(LDD_TDeviceData *DeviceDataPtr,...
-**         Enable                    - LDD_TError DMA1_Enable(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         Disable                   - LDD_TError DMA1_Disable(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         EnableRequest             - LDD_TError DMA1_EnableRequest(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         DisableRequest            - LDD_TError DMA1_DisableRequest(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         StartTransfer             - LDD_TError DMA1_StartTransfer(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         GetTransferCompleteStatus - bool DMA1_GetTransferCompleteStatus(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         GetError                  - LDD_DMA_TErrorFlags DMA1_GetError(DMA1_TChanDeviceData *ChanDeviceDataPtr);
-**         SetSourceAddress          - LDD_TError DMA1_SetSourceAddress(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
-**         SetDestinationAddress     - LDD_TError DMA1_SetDestinationAddress(DMA1_TChanDeviceData...
-**         SetTransactionCount       - LDD_TError DMA1_SetTransactionCount(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
-**         SetRequestCount           - LDD_TError DMA1_SetRequestCount(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
+**         Init                  - LDD_TDeviceData* DMA1_Init(void);
+**         InitChannel           - LDD_TDeviceData* DMA1_InitChannel(LDD_TDeviceData *DeviceDataPtr,...
+**         Enable                - LDD_TError DMA1_Enable(DMA1_TChanDeviceData *ChanDeviceDataPtr);
+**         Disable               - LDD_TError DMA1_Disable(DMA1_TChanDeviceData *ChanDeviceDataPtr);
+**         EnableRequest         - LDD_TError DMA1_EnableRequest(DMA1_TChanDeviceData *ChanDeviceDataPtr);
+**         DisableRequest        - LDD_TError DMA1_DisableRequest(DMA1_TChanDeviceData *ChanDeviceDataPtr);
+**         StartTransfer         - LDD_TError DMA1_StartTransfer(DMA1_TChanDeviceData *ChanDeviceDataPtr);
+**         GetError              - LDD_DMA_TErrorFlags DMA1_GetError(DMA1_TChanDeviceData *ChanDeviceDataPtr);
+**         SetSourceAddress      - LDD_TError DMA1_SetSourceAddress(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
+**         SetDestinationAddress - LDD_TError DMA1_SetDestinationAddress(DMA1_TChanDeviceData...
+**         SetTransactionCount   - LDD_TError DMA1_SetTransactionCount(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
+**         SetRequestCount       - LDD_TError DMA1_SetRequestCount(DMA1_TChanDeviceData *ChanDeviceDataPtr,...
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -136,16 +135,16 @@
 #define DMA1_DYNAMIC_CHANNEL_COUNT                          0x00U
 
 /* Logical channel constants */
-#define DMA1_CHN_0_PHY_NUM                                  (0U)
-#define DMA1_CHN_0_PHY_MASK                                 (1U)
+#define DMA1_CHN_0_PHY_NUM                                  (1U)
+#define DMA1_CHN_0_PHY_MASK                                 (2U)
 #define DMA1_CHN_0_DMA_REGS_PTR                             (DMA_BASE_PTR)
-#define DMA1_CHN_0_TCD_PTR                                  ((DMA1_TTCD*)(void*)&DMA_TCD0_SADDR)
-#define DMA1_CHN_0_DMAMUX_CFG_REG_PTR                       ((uint8_t*)(void*)&DMAMUX_CHCFG0)
-#define DMA1_CHN_1_PHY_NUM                                  (1U)
-#define DMA1_CHN_1_PHY_MASK                                 (2U)
+#define DMA1_CHN_0_TCD_PTR                                  ((DMA1_TTCD*)(void*)&DMA_TCD1_SADDR)
+#define DMA1_CHN_0_DMAMUX_CFG_REG_PTR                       ((uint8_t*)(void*)&DMAMUX_CHCFG1)
+#define DMA1_CHN_1_PHY_NUM                                  (2U)
+#define DMA1_CHN_1_PHY_MASK                                 (4U)
 #define DMA1_CHN_1_DMA_REGS_PTR                             (DMA_BASE_PTR)
-#define DMA1_CHN_1_TCD_PTR                                  ((DMA1_TTCD*)(void*)&DMA_TCD1_SADDR)
-#define DMA1_CHN_1_DMAMUX_CFG_REG_PTR                       ((uint8_t*)(void*)&DMAMUX_CHCFG1)
+#define DMA1_CHN_1_TCD_PTR                                  ((DMA1_TTCD*)(void*)&DMA_TCD2_SADDR)
+#define DMA1_CHN_1_DMAMUX_CFG_REG_PTR                       ((uint8_t*)(void*)&DMAMUX_CHCFG2)
 
 /* Channel MUX macros */
 #define DMA1__MuxReset(_DMAMUX_CFG_PTR)                     (*_DMAMUX_CFG_PTR = 0U)
@@ -247,7 +246,6 @@ typedef struct DMA1_TDevConst_struct {
 typedef struct DMA1_TChnDevData_stuct {
   DMA1_TTCD                       *TCDPtr;                 /*!< Channel TCD address */
   DMA1_TChnDevConst const         *ChnDevConstPtr;         /*!< Channel device constants structure address */
-  bool                             TransferCompleteStatus; /*!< Component TransferCompleteStatus variable */
   uint32_t                         RWTransactionUint;      /*!< Transaction unit size [bytes] variable */
   LDD_DMA_TErrorFlags              ErrorFlags;             /*!< Channel error flags */
   LDD_TUserData                   *UserDataPtr;            /*!< User data pointer */
@@ -263,14 +261,14 @@ typedef struct {
 /* Channel constants array */
 DMA1_TDevConst const DMA1_DevConst = {
   {
-    { /* Channel 0 (DMA_Channel0) */
+    { /* Channel 0 (DMA_Channel1) */
       DMA1_CHN_0_PHY_NUM,                                  /*!< Physical channel number */
       DMA1_CHN_0_PHY_MASK,                                 /*!< Physical channel mask */
       DMA1_CHN_0_DMA_REGS_PTR,                             /*!< DMA registers address */
       DMA1_CHN_0_TCD_PTR,                                  /*!< TCD registers address */
       DMA1_CHN_0_DMAMUX_CFG_REG_PTR                        /*!< Mux cfg. register address */
     },
-    { /* Channel 1 (DMA_Channel1) */
+    { /* Channel 1 (DMA_Channel2) */
       DMA1_CHN_1_PHY_NUM,                                  /*!< Physical channel number */
       DMA1_CHN_1_PHY_MASK,                                 /*!< Physical channel mask */
       DMA1_CHN_1_DMA_REGS_PTR,                             /*!< DMA registers address */
@@ -281,14 +279,14 @@ DMA1_TDevConst const DMA1_DevConst = {
   /* Channel priorities */
   {
     {
-      DMA_DCHPRI0_CHPRI(0x03),         /* DCHPR3 register initial value */
-      DMA_DCHPRI0_CHPRI(0x02),         /* DCHPR2 register initial value */
-      (DMA_DCHPRI0_DPA_MASK | DMA_DCHPRI0_CHPRI(0x01)), /* DCHPR1 register initial value */
-      (DMA_DCHPRI0_DPA_MASK | DMA_DCHPRI0_CHPRI(0x00)), /* DCHPR0 register initial value */
-      DMA_DCHPRI0_CHPRI(0x07),         /* DCHPR7 register initial value */
-      DMA_DCHPRI0_CHPRI(0x06),         /* DCHPR6 register initial value */
-      DMA_DCHPRI0_CHPRI(0x05),         /* DCHPR5 register initial value */
-      DMA_DCHPRI0_CHPRI(0x04),         /* DCHPR4 register initial value */
+      DMA_DCHPRI0_CHPRI(0x02),         /* DCHPR3 register initial value */
+      (DMA_DCHPRI0_DPA_MASK | DMA_DCHPRI0_CHPRI(0x04)), /* DCHPR2 register initial value */
+      (DMA_DCHPRI0_DPA_MASK | DMA_DCHPRI0_CHPRI(0x03)), /* DCHPR1 register initial value */
+      DMA_DCHPRI0_CHPRI(0x01),         /* DCHPR0 register initial value */
+      DMA_DCHPRI0_CHPRI(0x00),         /* DCHPR7 register initial value */
+      DMA_DCHPRI0_CHPRI(0x07),         /* DCHPR6 register initial value */
+      DMA_DCHPRI0_CHPRI(0x06),         /* DCHPR5 register initial value */
+      DMA_DCHPRI0_CHPRI(0x05),         /* DCHPR4 register initial value */
       DMA_DCHPRI0_CHPRI(0x0B),         /* DCHPR11 register initial value */
       DMA_DCHPRI0_CHPRI(0x0A),         /* DCHPR10 register initial value */
       DMA_DCHPRI0_CHPRI(0x09),         /* DCHPR9 register initial value */
@@ -305,9 +303,9 @@ DMA1_TDevConst const DMA1_DevConst = {
 /* {Default RTOS Adapter} Static object used for simulation of dynamic driver memory allocation */
 static DMA1_TDeviceData DevDataPtr__DEFAULT_RTOS_ALLOC;
 /* {Default RTOS Adapter} Global variable used for passing a parameter into ISR */
-static DMA1_TDeviceDataPtr INT_DMA0__DEFAULT_RTOS_ISRPARAM;
-/* {Default RTOS Adapter} Global variable used for passing a parameter into ISR */
 static DMA1_TDeviceDataPtr INT_DMA1__DEFAULT_RTOS_ISRPARAM;
+/* {Default RTOS Adapter} Global variable used for passing a parameter into ISR */
+static DMA1_TDeviceDataPtr INT_DMA2__DEFAULT_RTOS_ISRPARAM;
 /* {Default RTOS Adapter} Global variable used for passing a parameter into ISR */
 static DMA1_TDeviceDataPtr INT_DMA_Error__DEFAULT_RTOS_ISRPARAM;
 static void HandleInterrupt(DMA1_TChnDevData *ChnDevDataPtr);
@@ -379,25 +377,25 @@ LDD_TDeviceData* DMA1_Init(void)
   DevDataPtr = &DevDataPtr__DEFAULT_RTOS_ALLOC;
   /* {Default RTOS Adapter} Driver memory allocation: Fill the allocated memory by zero value */
   PE_FillMemory(DevDataPtr, 0U, sizeof(DMA1_TDeviceData));
-  /* Transfer complete interrupt vector(INT_DMA0) allocation */
-  /* {Default RTOS Adapter} Set interrupt vector: IVT is static, ISR parameter is passed by the global variable */
-  INT_DMA0__DEFAULT_RTOS_ISRPARAM =  DevDataPtr;
   /* Transfer complete interrupt vector(INT_DMA1) allocation */
   /* {Default RTOS Adapter} Set interrupt vector: IVT is static, ISR parameter is passed by the global variable */
   INT_DMA1__DEFAULT_RTOS_ISRPARAM =  DevDataPtr;
+  /* Transfer complete interrupt vector(INT_DMA2) allocation */
+  /* {Default RTOS Adapter} Set interrupt vector: IVT is static, ISR parameter is passed by the global variable */
+  INT_DMA2__DEFAULT_RTOS_ISRPARAM =  DevDataPtr;
   /* Transfer error interrupt vector(INT_DMA_Error) allocation */
   /* {Default RTOS Adapter} Set interrupt vector: IVT is static, ISR parameter is passed by the global variable */
   INT_DMA_Error__DEFAULT_RTOS_ISRPARAM =  DevDataPtr;
-  /* Transfer complete interrupt vector(INT_DMA0) priority setting */
-  /* NVICIP0: PRI0=0x80 */
-  NVICIP0 = NVIC_IP_PRI0(0x80);
-  /* NVICISER0: SETENA|=1 */
-  NVICISER0 |= NVIC_ISER_SETENA(0x01);
   /* Transfer complete interrupt vector(INT_DMA1) priority setting */
   /* NVICIP1: PRI1=0x80 */
   NVICIP1 = NVIC_IP_PRI1(0x80);
   /* NVICISER0: SETENA|=2 */
   NVICISER0 |= NVIC_ISER_SETENA(0x02);
+  /* Transfer complete interrupt vector(INT_DMA2) priority setting */
+  /* NVICIP2: PRI2=0x80 */
+  NVICIP2 = NVIC_IP_PRI2(0x80);
+  /* NVICISER0: SETENA|=4 */
+  NVICISER0 |= NVIC_ISER_SETENA(0x04);
   /* Transfer error interrupt vector(INT_DMA_Error) priority setting */
   /* NVICIP16: PRI16=0x80 */
   NVICIP16 = NVIC_IP_PRI16(0x80);
@@ -470,7 +468,6 @@ LDD_TDeviceData* DMA1_InitChannel(LDD_TDeviceData *DeviceDataPtr, DMA1_TChnInit 
   DMA1__MuxReset(DmaMuxCfgPtr);                            /* Disable channel peripheral request (in the DMAMUX) */
   CancelTransfer(ChnDevConstPtr);                          /* Cancel transfer (if pending) */
   *TCDPtr = ChIntPtr->TCD;                                 /* Initialize channel TCD (channel registers) */
-  ChnDevDataPtr->TransferCompleteStatus = FALSE;
   ChnDevDataPtr->ChnDevConstPtr = ChnDevConstPtr;          /* Remember channel constants address */
   ChnDevDataPtr->TCDPtr = TCDPtr;                          /* Remember channel TCD address */
   ChnDevDataPtr->UserDataPtr = UserDataPtr;                /* Remember channel User data pointer */
@@ -631,44 +628,6 @@ LDD_TError DMA1_StartTransfer(DMA1_TChanDeviceData *ChanDeviceDataPtr)
   /* Start transfer */
   DMA1__StartTransfer(ChnDevConstPtr->DmaMemMapPtr, ChnDevConstPtr->PhyChnNum);
   return ERR_OK;
-}
-
-/*
-** ===================================================================
-**     Method      :  DMA1_GetTransferCompleteStatus (component DMAController)
-*/
-/*!
-**     @brief
-**         This method returns value of "Transfer done" flag and clears
-**         this flag if it was set. It is intended to be used in
-**         pooling mode to check transfer state. In this case the
-**         method returns value of real hw flag.
-**         It can also be used in interrupt mode. In interrupt mode the
-**         method doesn't return value of real hw flag but value of sw
-**         flag that is updated to the real value in the interrupt
-**         service routine (This method returns FALSE unless ISR is
-**         invoked).
-**     @param
-**         ChanDeviceDataPtr - DMA channel
-**                           data structure pointer returned by
-**                           [InitChannel()] method.
-**     @return
-**                         - Return values: 
-**                           - [true] - Last transfer is done. 
-**                           - [false] - Transfer is pending or last
-**                           call of this method has returned [true].
-*/
-/* ===================================================================*/
-bool DMA1_GetTransferCompleteStatus(DMA1_TChanDeviceData *ChanDeviceDataPtr)
-{
-
-  if (((DMA1_TChnDevData *)ChanDeviceDataPtr)->TransferCompleteStatus) {
-    /* Clear TransferCompleteStatus */
-    ((DMA1_TChnDevData *)ChanDeviceDataPtr)->TransferCompleteStatus = FALSE;
-    return TRUE;
-  } else {
-    return FALSE;
-  }
 }
 
 /*
@@ -889,7 +848,6 @@ static void HandleInterrupt(DMA1_TChnDevData *ChnDevDataPtr)
     }
   } else if (DMA1__GetTransferDoneFlag(ChnDevConstPtr->TCDPtr)) {
     /* Transfer done without error */
-    ChnDevDataPtr->TransferCompleteStatus = TRUE;
     DMA1__ClearChannelInterruptFlag(DmaMemMapPtr, ChnDevConstPtr->PhyChnNum);
     DMA1__ClearDoneFlag(DmaMemMapPtr, ChnDevConstPtr->PhyChnNum);
     if (ChnDevDataPtr->Events.OnCompleteFnPtr != NULL) {
@@ -908,10 +866,10 @@ static void HandleInterrupt(DMA1_TChnDevData *ChnDevDataPtr)
 **         This method is internal. It is used by Processor Expert only.
 ** ===================================================================
 */
-PE_ISR(DMA1_INT_DMA0_TransferComplete_ISR)
+PE_ISR(DMA1_INT_DMA1_TransferComplete_ISR)
 {
   /* {Default RTOS Adapter} ISR parameter is passed through the global variable */
-  DMA1_TDeviceDataPtr DevDataPtr = INT_DMA0__DEFAULT_RTOS_ISRPARAM;
+  DMA1_TDeviceDataPtr DevDataPtr = INT_DMA1__DEFAULT_RTOS_ISRPARAM;
   HandleInterrupt(&(DevDataPtr->ChnDevData[0]));
 }
 
@@ -924,10 +882,10 @@ PE_ISR(DMA1_INT_DMA0_TransferComplete_ISR)
 **         This method is internal. It is used by Processor Expert only.
 ** ===================================================================
 */
-PE_ISR(DMA1_INT_DMA1_TransferComplete_ISR)
+PE_ISR(DMA1_INT_DMA2_TransferComplete_ISR)
 {
   /* {Default RTOS Adapter} ISR parameter is passed through the global variable */
-  DMA1_TDeviceDataPtr DevDataPtr = INT_DMA1__DEFAULT_RTOS_ISRPARAM;
+  DMA1_TDeviceDataPtr DevDataPtr = INT_DMA2__DEFAULT_RTOS_ISRPARAM;
   HandleInterrupt(&(DevDataPtr->ChnDevData[1]));
 }
 

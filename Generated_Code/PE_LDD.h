@@ -6,7 +6,7 @@
 **     Version     : Component 01.000, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-26, 16:04, # CodeGen: 50
+**     Date/Time   : 2015-05-29, 11:27, # CodeGen: 64
 **     Abstract    :
 **
 **     Settings    :
@@ -62,10 +62,10 @@
 #include "PE_Error.h"
 #include "PE_Const.h"
 #include "SPI1.h"
+#include "SpiBus2.h"
+#include "DmaTxCh.h"
+#include "DmaRxCh.h"
 #include "DMA1.h"
-#include "DMACH1.h"
-#include "DMACH2.h"
-#include "SPI2.h"
 
 
 /*

@@ -31,15 +31,15 @@
 #include "Cpu.h"
 #include "Events.h"
 #include "SPI1.h"
+#include "SpiBus2.h"
+#include "DmaTxCh.h"
+#include "DmaRxCh.h"
 #include "DMA1.h"
-#include "DMACH1.h"
-#include "DMACH2.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
 #include "IO_Map.h"
-#include "SPI2.h"
 #include "ads130e08.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
 uint32_t SpiDmaTxBuffer[300];
@@ -57,7 +57,7 @@ typedef enum _eDmaChan_e
 
 uint8_t PhysicalRxChannel = 0; //Channel Number tied to the Rx buffer.
 
-/*Function that changes the offset of DMACH2 (Physical channel 1) to 0,
+/*Function that changes the offset of DmaRxCh (Physical channel 1) to 0,
  * used for trash/tx only operation.
  *
  * @todo: add trash byte pointer argument
@@ -95,23 +95,33 @@ int main(void)
   /* Write your local variable definition here */
 	LDD_TDeviceDataPtr SpiTxDmaLDD;
 	LDD_TDeviceDataPtr SpiRxDmaLDD;
+	LDD_TDeviceDataPtr SpiBus2DataPtr;
 
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
-
-  //GPIO Initialization for testing switching timing
-  SIM_SCGC5  |= (1<<12);
-  PORTD_PCR7 |= (1<<8);
-  GPIOD_PDDR |= (1<<7);//test
+  SpiBus2DataPtr=SpiBus2_Init(NULL);
+  /*----Additional Setup to make sure all registers are initialized
+   * correctly.
+   * Maybe copy into SpiBus2_Init?
+   */
+  SPI2_MCR  = 0x80030100;
+  SPI2_TCR  = 0x00;
+  SPI2_SR   = 0x42000000;
+  SPI2_RSER = 0x03030000 | (1<<28);
+  /*----------------------------------*/
+//  //GPIO Initialization for testing switching timing
+//  SIM_SCGC5  |= (1<<12);
+//  PORTD_PCR7 |= (1<<8);
+//  GPIOD_PDDR |= (1<<7);//test
   //-------------------------------------------------
 
   /* Write your code here */
-  SpiTxDmaLDD = DMACH1_Init(NULL);
-  SpiRxDmaLDD = DMACH2_Init(NULL);
+  SpiTxDmaLDD = DmaTxCh_Init(NULL);
+  SpiRxDmaLDD = DmaRxCh_Init(NULL);
 
   //Pull test pin low
-  GPIOD_PCOR = (1<<7);//test
+//  GPIOD_PCOR = (1<<7);//test
 
   // Enable the module in processor expert internally
   DMA1_Enable(SpiTxDmaLDD);
@@ -129,17 +139,17 @@ int main(void)
   SpiDmaTxBuffer[4] = SPI_PUSHR_PCS(1) | SPI_PUSHR_CONT_MASK | 0X00;
   SpiDmaTxBuffer[5] = SPI_PUSHR_PCS(1) | SPI_PUSHR_CONT_MASK | 0X00;
   SpiDmaTxBuffer[6] = SPI_PUSHR_PCS(1) | SPI_PUSHR_EOQ_MASK  | 0x00;		// Transmit an empty byte to clock in the RX byte
-  DMACH1_SetSourceAddress(SpiTxDmaLDD, &SpiDmaTxBuffer[0]);
-  DMACH1_SetDestinationAddress(SpiTxDmaLDD, &SPI2_PUSHR);
+  DmaTxCh_SetSourceAddress(SpiTxDmaLDD, &SpiDmaTxBuffer[0]);
+  DmaTxCh_SetDestinationAddress(SpiTxDmaLDD, &SPI2_PUSHR);
 
-  DMACH2_SetSourceAddress(SpiRxDmaLDD, &SPI2_POPR);
-  DMACH2_SetDestinationAddress(SpiRxDmaLDD, &SpiDmaRxBuffer[0]);
+  DmaRxCh_SetSourceAddress(SpiRxDmaLDD, &SPI2_POPR);
+  DmaRxCh_SetDestinationAddress(SpiRxDmaLDD, &SpiDmaRxBuffer[0]);
 
   //added a SetTransactionCount API from ProcessorExpert. Set to one
-  DMACH1_SetTransactionCount(SpiTxDmaLDD,1);
-  DMACH2_SetTransactionCount(SpiRxDmaLDD,1);
-  DMACH1_SetRequestCount(SpiTxDmaLDD, 1);
-  DMACH2_SetRequestCount(SpiRxDmaLDD, 1);	// We care about 2 bytes, but we are going to get a receive for every
+  DmaTxCh_SetTransactionCount(SpiTxDmaLDD,1);
+  DmaRxCh_SetTransactionCount(SpiRxDmaLDD,1);
+  DmaTxCh_SetRequestCount(SpiTxDmaLDD, 1);
+  DmaRxCh_SetRequestCount(SpiRxDmaLDD, 1);	// We care about 2 bytes, but we are going to get a receive for every
    	  	  	  	  	  	  	// transmit byte
 
   //Enable requests for Tx and Rx
