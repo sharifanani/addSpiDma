@@ -63,23 +63,23 @@ uint8_t PhysicalRxChannel = 0; //Channel Number tied to the Rx buffer.
  * @todo: add trash byte pointer argument
  */
 
-void DumpDmaRx(LDD_TDeviceDataPtr* DmaCh, eDmaChans_t PhysicalChannelNum)
-{
-	GPIOD_PSOR = (1<<7);//test pin, remove from final release
-	DMA1_Disable(DmaCh);
-	switch(PhysicalChannelNum){
-	case eDmaCh0:
-		DMA_TCD0_DOFF=0x00;
-	case eDmaCh1:
-		DMA_TCD1_DOFF=0x00;
-	}
-	//DMA_TCD1_DOFF=0x00; //THIS REGISTER IS CHANNEL SPECIFIC.
-						//@todo? change register using passed
-						//channel?
-	DMA1_Enable(DmaCh);
-	GPIOD_PCOR = (1<<7);//test pin, remove from final release
-	//3.38us total for switch.
-}
+//void DumpDmaRx(LDD_TDeviceDataPtr* DmaCh, eDmaChans_t PhysicalChannelNum)
+//{
+//	GPIOD_PSOR = (1<<7);//test pin, remove from final release
+//	DMA1_Disable(DmaCh);
+//	switch(PhysicalChannelNum){
+//	case eDmaCh0:
+//		DMA_TCD0_DOFF=0x00;
+//	case eDmaCh1:
+//		DMA_TCD1_DOFF=0x00;
+//	}
+//	//DMA_TCD1_DOFF=0x00; //THIS REGISTER IS CHANNEL SPECIFIC.
+//						//@todo? change register using passed
+//						//channel?
+//	DMA1_Enable(DmaCh);
+//	GPIOD_PCOR = (1<<7);//test pin, remove from final release
+//	//3.38us total for switch.
+//}
 
 /*
  * Get the address the high 16 bits of a 32 bit word
@@ -116,7 +116,7 @@ int main(void)
   // Enable the module in processor expert internally
   DMA1_Enable(SpiTxDmaLDD);
   DMA1_Enable(SpiRxDmaLDD);
-  DumpDmaRx(SpiRxDmaLDD);
+//  DumpDmaRx(SpiRxDmaLDD);
   SpiRxDmaComplete = 0;
   SpiTxDmaComplete = 0;
 
